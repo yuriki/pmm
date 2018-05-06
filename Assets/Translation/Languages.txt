@@ -1,0 +1,43 @@
+Exit : English = Exit
+Exit : Russian = Выход
+Exit : Ukrainian = Вихiд
+
+Done : English = Done
+Done : Russian = Да
+Done : Ukrainian = Так
+
+Records : English = Records
+Records : Russian = Рекорды
+Records : Ukrainian = Рекорди
+
+NewRecord : English = New\nRecord
+NewRecord : Russian = Новый\nРекорд
+NewRecord : Ukrainian = Новий\nРекорд
+
+Start : English = Start
+Start : Russian = Начать
+Start : Ukrainian = Почати
+
+Victory : English = Victory!
+Victory : Russian = Победа!
+Victory : Ukrainian = Перемога!
+
+Earn : English = Earned:
+Earn : Russian = Заработано:
+Earn : Ukrainian = Зароблено:
+
+Instruction : English = Instruction
+Instruction : Russian = Инструкция
+Instruction : Ukrainian = Iнструкцiя
+
+InstructionDecsription : English = Solve 10 math examples as fast as possible.\n\nEach correct answer gives a Coin.\n\nEach wrong answer kills a Coin.
+InstructionDecsription : Russian = Реши 10 примеров как можно быстрее.\n\nКаждый правильный ответ - Монетка.\n\nКаждая ошибка - убивает Монетку.
+InstructionDecsription : Ukrainian = Обчисли 10 прикладiв якомога швидше.\n\nКожна вiрна вiдповiдь - Копiйка.\n\nКожна помилка - вбиває Копiйку.
+
+Again : English = Again
+Again : Russian = Еще
+Again : Ukrainian = Ще
+
+s : English = s
+s : Russian = с
+s : Ukrainian = с
