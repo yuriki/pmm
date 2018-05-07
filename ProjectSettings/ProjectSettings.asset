@@ -247,7 +247,7 @@ PlayerSettings:
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: D:/desktop/Math4Ameli/keys/pocketmoneymath.keystore
   AndroidKeyaliasName: pocketmoneymathalias
-  AndroidTVCompatibility: 1
+  AndroidTVCompatibility: 0
   AndroidIsGame: 0
   AndroidEnableTango: 0
   androidEnableBanner: 0

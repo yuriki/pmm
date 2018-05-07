@@ -2952,13 +2952,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1535636746}
   - component: {fileID: 1535636750}
+  - component: {fileID: 1535636749}
   - component: {fileID: 1535636747}
   - component: {fileID: 1535636748}
-  - component: {fileID: 1535636749}
   - component: {fileID: 1535636745}
   - component: {fileID: 1535636752}
-  - component: {fileID: 1535636751}
   - component: {fileID: 1535636753}
+  - component: {fileID: 1535636751}
   m_Layer: 0
   m_Name: GeneralObject
   m_TagString: Untagged
@@ -3028,7 +3028,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1535636744}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06e000c2d72ed6641916b157fcb403af, type: 3}
   m_Name: 

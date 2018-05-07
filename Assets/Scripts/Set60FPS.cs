@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Set60FPS : MonoBehaviour
 {
-	void Awake()
+	void Start()
 	{
 		Application.targetFrameRate = 60;
 	}
