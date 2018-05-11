@@ -4,9 +4,9 @@ using System.Collections;
 
 public class MakeScreenshotByMouseClick : MonoBehaviour
 {
-	public Camera cam;
+	public Camera mainCamera;
 
-	int counter;
+	int counter = 1;
 
 	//void Start()
 	//{
@@ -19,7 +19,7 @@ public class MakeScreenshotByMouseClick : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(1))
 		{
-			ScreenCapture.CaptureScreenshot("Assets/Screenshots/Sreenshot" + counter.ToString("00") + "_" + cam.pixelWidth + "x" + cam.pixelHeight + "_" + Lean.Localization.LeanLocalization.CurrentLanguage + "_SceneID"+ SceneManager.GetActiveScene().name + ".png");
+			ScreenCapture.CaptureScreenshot("Assets/Screenshots/Sreenshot" + counter.ToString("00") + "_" + mainCamera.pixelWidth + "x" + mainCamera.pixelHeight + "_" + Lean.Localization.LeanLocalization.CurrentLanguage + "_SceneID"+ SceneManager.GetActiveScene().name + ".png");
 			counter++;
 		}
 	}
