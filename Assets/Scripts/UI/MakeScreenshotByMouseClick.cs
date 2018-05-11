@@ -6,15 +6,28 @@ public class MakeScreenshotByMouseClick : MonoBehaviour
 {
 	public Camera cam;
 
-	void Start()
+	int counter;
+
+	//void Start()
+	//{
+	//	ScreenCapture.CaptureScreenshot("Assets/JSON/Sreenshot_" + cam.pixelWidth + "x" + cam.pixelHeight + "_" + Lean.Localization.LeanLocalization.CurrentLanguage + "_" + SceneManager.GetActiveScene().name + ".png");
+	//	//StartCoroutine(ScreenshotWithDelay());
+	//}
+
+
+	private void Update()
 	{
-		ScreenCapture.CaptureScreenshot("Assets/JSON/Sreenshot_" + cam.pixelWidth + "x" + cam.pixelHeight + "_" + Lean.Localization.LeanLocalization.CurrentLanguage + "_" + SceneManager.GetActiveScene().name + ".png");
-		StartCoroutine(ScreenshotWithDelay());
+		if (Input.GetMouseButtonDown(1))
+		{
+			ScreenCapture.CaptureScreenshot("Assets/Screenshots/Sreenshot" + counter.ToString("00") + "_" + cam.pixelWidth + "x" + cam.pixelHeight + "_" + Lean.Localization.LeanLocalization.CurrentLanguage + "_SceneID"+ SceneManager.GetActiveScene().name + ".png");
+			counter++;
+		}
 	}
 
-	IEnumerator ScreenshotWithDelay()
-	{
-		yield return new WaitForSeconds(8);
-		ScreenCapture.CaptureScreenshot("Assets/JSON/Sreenshot_" + cam.pixelWidth + "x" + cam.pixelHeight + "_" + Lean.Localization.LeanLocalization.CurrentLanguage + "_" + SceneManager.GetActiveScene().name + "_Delayed.png");
-	}
+
+	//IEnumerator ScreenshotWithDelay()
+	//{
+	//	yield return new WaitForSeconds(8);
+	//	ScreenCapture.CaptureScreenshot("Assets/JSON/Sreenshot_" + cam.pixelWidth + "x" + cam.pixelHeight + "_" + Lean.Localization.LeanLocalization.CurrentLanguage + "_" + SceneManager.GetActiveScene().name + "_Delayed.png");
+	//}
 }
