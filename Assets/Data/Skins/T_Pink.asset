@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109e5469a5aa4cd499744cad55034992, type: 3}
   m_Name: T_Pink
   m_EditorClassIdentifier: 
-  color: {r: 0.7647059, g: 0.21366784, b: 0.57224965, a: 1}
+  color: {r: 0.8745099, g: 0.3372549, b: 0.6862745, a: 1}
