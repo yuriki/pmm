@@ -7,6 +7,7 @@ public class ExampleGenerator : MonoBehaviour
 	[Header("States")]
 	public StateData exampleSwitch;
 	public NonRangedStateData correctAnswer;
+	public MultTableToggles toggles10;
 
 	[Header("Text")]
 	public Text inputResultText;
@@ -24,6 +25,14 @@ public class ExampleGenerator : MonoBehaviour
 
 	int generated2; 
 	int tmpGenerated2;
+
+	int randomToggle;
+	int signInt;
+	string signStr;
+
+	// counters to help get rid of infinite while-loop
+	int i;
+	int j;
 
 	bool isFirstTimeWobble = true;
 
@@ -106,19 +115,204 @@ public class ExampleGenerator : MonoBehaviour
 		correctAnswer.Value = generated + generated2;
 	}
 
+
 	void GenerateCountTo10Example ()
 	{
+		//int len = toggles10.toggles.Length;
+
+		//foreach (var opt in toggles10.toggles)
+		//{
+
+		//}
+
+		//choosing subtype of example based on user activated toggles
+		randomToggle = UnityEngine.Random.Range(0, 3);
+		while (!toggles10.toggles[randomToggle])
+		{
+			if (randomToggle != 2)
+			{
+				randomToggle++;
+			}
+			else
+			{
+				randomToggle = 0;
+			}
+		}
+
+
+		//if (randomToggle == 0)
+		//{
+		//	// tmpGenerated = generated = 0 after first initialization
+		//	// I'm making next generated value different from previous one (tmpGenerated)
+		//	while (tmpGenerated == generated)
+		//	{ 
+		//		generated = UnityEngine.Random.Range(1, 10);
+		//	}
+		//	tmpGenerated = generated;
+
+		//	generated2 = UnityEngine.Random.Range(1, 10);
+		//	while (/*tmpGenerated2 == generated2 &&*/ (generated2 + generated) > 10)
+		//	{
+		//		generated2 = UnityEngine.Random.Range(1, 10);
+		//	}
+
+		//	mathExamp.text = generated.ToString() + "+" + generated2.ToString() + "=";
+		//	correctAnswer.Value = generated + generated2;
+		//}
+		//else if (randomToggle == 1)
+		//{
+		//	// tmpGenerated = generated = 0 after first initialization
+		//	// I'm making next generated value different from previous one (tmpGenerated)
+		//	while (tmpGenerated == generated)
+		//	{
+		//		generated = UnityEngine.Random.Range(1, 10);
+		//	}
+		//	tmpGenerated = generated;
+
+		//	generated2 = UnityEngine.Random.Range(1, 10);
+		//	while (/*tmpGenerated2 == generated2 &&*/ (generated - generated2) < 0)
+		//	{
+		//		generated2 = UnityEngine.Random.Range(1, 10);
+		//	}
+
+		//	mathExamp.text = generated.ToString() + "-" + generated2.ToString() + "=";
+		//	correctAnswer.Value = generated - generated2;
+		//}
+		//else if (randomToggle == 2)
+		//{
+		//	// tmpGenerated = generated = 0 after first initialization
+		//	// I'm making next generated value different from previous one (tmpGenerated)
+		//	while (tmpGenerated == generated)
+		//	{
+		//		generated = UnityEngine.Random.Range(1, 10);
+		//	}
+		//	tmpGenerated = generated;
+
+		//	if (toggles10.toggles[0] && toggles10.toggles[1])
+		//	{
+		//		randomToggle = UnityEngine.Random.Range(0, 2);
+		//		if (randomToggle == 1)
+		//		{
+		//			randomToggle = -1;
+		//			sign = "-";
+		//		}
+		//		else
+		//		{
+		//			randomToggle = 1;
+		//			sign = "+";
+		//		}
+		//	}
+		//	else if (toggles10.toggles[1])
+		//	{
+		//		randomToggle = -1;
+		//		sign = "-";
+		//	}
+		//	else
+		//	{
+		//		randomToggle = 1;
+		//		sign = "+";
+		//	}
+
+		//	generated2 = UnityEngine.Random.Range(1, 10);
+		//	while (/*tmpGenerated2 == generated2 &&*/ (generated + randomToggle * generated2) < 0 && (generated + randomToggle * generated2) > 10)
+		//	{
+		//		generated2 = UnityEngine.Random.Range(1, 10);
+		//	}
+
+		//	mathExamp.text = generated.ToString() + sign + "^" + generated2.ToString() + "=";
+		//	correctAnswer.Value = generated + randomToggle * generated2;
+		//}
+
+
+
+		signInt = ChooseSign();
+		if (signInt == -1)
+		{
+			signStr = "-";
+		}
+		else
+		{
+			signStr = "+";
+		}
+
 		// tmpGenerated = generated = 0 after first initialization
 		// I'm making next generated value different from previous one (tmpGenerated)
 		while (tmpGenerated == generated)
-			generated = UnityEngine.Random.Range(0, 11);
-
+		{
+			generated = UnityEngine.Random.Range(1, 10);
+		}
 		tmpGenerated = generated;
 
-		mathExamp.text = "10-" + generated.ToString() + "=";
-		correctAnswer.Value = 10 - generated;
+		generated2 = UnityEngine.Random.Range(1, 10);
+		i = 1;
+		j = 1;
+		//IMPORTANT I can use expression "==0" here only if I regenerate variable "generated". Oterwise I have infinite loop
+		while ((generated + signInt * generated2) <= 0 || (generated + signInt * generated2) > 10 )
+		{
+			if ((generated + signInt * generated2) == 0)
+			{
+				j++;
+				if (j > 3)
+				{
+					j = 1;
+					break;
+				}
+			}
+
+			generated2 = UnityEngine.Random.Range(1, 10);
+			i++;
+			//to get rid of infinite loop I'm regenerating "generated" value here every 10 tries
+			if (i > 10)
+			{
+				while (tmpGenerated == generated)
+				{
+					generated = UnityEngine.Random.Range(1, 10);
+				}
+				tmpGenerated = generated;
+				i = 1;
+			}
+		}
+		//TODO make rearrangement for "10-?=3" type of example
+		mathExamp.text = generated + signStr + "^" + generated2 + "=";
+		correctAnswer.Value = generated + signInt * generated2;
+
 	}
 
+
+	int ChooseSign()
+	{
+		if (randomToggle == 2)									//if unknown
+		{
+			if (toggles10.toggles[0] && toggles10.toggles[1])
+			{
+				randomToggle = UnityEngine.Random.Range(0, 2);
+				if (randomToggle == 1)
+				{
+					return -1;
+				}
+				else
+				{
+					return 1;
+				}
+			}
+			else if (toggles10.toggles[1])
+			{
+				return -1;
+			}
+			else
+			{
+				return 1;
+			}
+		}
+		else if (randomToggle == 1)								//if minus
+		{
+			return -1;
+		}
+		else													//if plus
+		{
+			return 1;
+		}
+	}
 
 	void GenerateMultiplicationTableExample ()
 	{
