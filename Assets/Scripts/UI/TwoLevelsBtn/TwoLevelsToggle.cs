@@ -4,40 +4,45 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class MultTableToggle : MonoBehaviour
+public class TwoLevelsToggle : MonoBehaviour
 {
 	public GameObject SmallFlowerTogglesHolder;
-	public Text label;
-	public GameObject generalObject;
-	public Camera cam;
 	public GameObject[] otherButtons;
 
 	[Header("Settings for timing")]
 	public float distanceMyltiplier;
 	public float time;
 
+	[Header("Type of example this button generates")]
+	public ExampleTypeData exampleType; //corresponds ExampleSwitch StateData (read Developer Description)
+
+	Text label;
+	bool isSecondLevel;
 	Vector3 scale;
-	bool mouseDown;
-	bool secondLevelToggle;
-	bool firstToggleChanged;
-	bool currentStateForAllFurtherToggles;
-	GameObject prevObj;
 	Vector3 direction;
 	Vector3 tmp;
 
 
+	void Start()
+	{
+		label = this.transform.Find("Label").GetComponent<Text>();
+		label.text = exampleType.buttonName;
+	}
+
+
 	public void GoToLevelTwo()
 	{
-		if(secondLevelToggle)
+		if(isSecondLevel)
 		{
-			generalObject.GetComponent<LoadLevel>().LoadScene(2);
+			SaveTogglesStates(); //TODO
+			this.GetComponent<LoadLevel>().LoadScene(2);
 		}
 
-		if (!secondLevelToggle)
+		if (!isSecondLevel)
 		{
 			ChangeScale(0.7f);
 			ToggleSmallFlowerBtns();
-			label.text = "2×..";
+			label.text = exampleType.shortButtonName;
 
 			//spread buttons around asunder
 			foreach (var button in otherButtons)
@@ -57,16 +62,22 @@ public class MultTableToggle : MonoBehaviour
 
 				iTween.MoveTo(button, iTween.Hash("x", distanceMyltiplier*direction.x, "y", distanceMyltiplier*direction.y, "time", time, "easetype", "easeInQuad"));
 			}
-			secondLevelToggle = true;
+			isSecondLevel = true;
 		}
+	}
+
+
+	void SaveTogglesStates()
+	{
+
 	}
 
 
 	public void BackToLevelOne()
 	{
 		ChangeScale(1f);
-		
-		label.text = "2×3=?";
+
+		label.text = exampleType.buttonName;
 		ToggleSmallFlowerBtns();
 
 		//brings all buttons aroud back
@@ -80,7 +91,7 @@ public class MultTableToggle : MonoBehaviour
 			button.transform.localScale = new Vector3 (1f, 1f, 1f);
 		}
 
-		secondLevelToggle = false;
+		isSecondLevel = false;
 	}
 
 
@@ -97,51 +108,5 @@ public class MultTableToggle : MonoBehaviour
 	{
 		SmallFlowerTogglesHolder.SetActive(!SmallFlowerTogglesHolder.activeInHierarchy);
 	}
-
-
-	void Update()
-	{
-
-		if (Input.GetMouseButtonDown(0))
-		{
-			mouseDown = true;
-		}
-		if (Input.GetMouseButtonUp(0))
-		{
-			mouseDown = false;
-			prevObj = null;
-			firstToggleChanged = false;
-		}
-	}
-
-
-	private void FixedUpdate()
-	{
-		if (mouseDown)
-		{
-			RaycastHit2D hit = Physics2D.Raycast(new Vector2(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y), -Vector2.up, 0f);
-			if (hit.collider != null)
-			{
-				//if objects are different
-				if (!GameObject.ReferenceEquals(prevObj, hit.transform.gameObject))
-				{
-					prevObj = hit.transform.gameObject;
-
-					if (!firstToggleChanged)
-					{
-						prevObj.GetComponent<Toggle>().isOn = !prevObj.GetComponent<Toggle>().isOn;
-						currentStateForAllFurtherToggles = prevObj.GetComponent<Toggle>().isOn;
-						firstToggleChanged = true;
-					}
-
-					if (firstToggleChanged)
-					{
-						prevObj.GetComponent<Toggle>().isOn = currentStateForAllFurtherToggles;
-					}
-				}
-			} 
-		}
-	}
-
 
 }

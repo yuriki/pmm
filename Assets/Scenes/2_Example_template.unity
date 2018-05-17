@@ -329,7 +329,7 @@ GameObject:
   m_Layer: 5
   m_Name: BottomRight
   m_TagString: Untagged
-  m_Icon: {fileID: -2349822300998112484, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -794,7 +794,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.42552114}
-  m_AnchoredPosition: {x: 62.249023, y: 548.105}
+  m_AnchoredPosition: {x: 62.249023, y: 548.10504}
   m_SizeDelta: {x: -122.50195, y: 548.056}
   m_Pivot: {x: 0.49999994, y: 1.0000001}
 --- !u!1001 &256878735
@@ -862,7 +862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &264491594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1471,7 +1471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &543169514
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1592,7 +1592,7 @@ GameObject:
   m_Layer: 5
   m_Name: UndergroundMiddleBottom
   m_TagString: Untagged
-  m_Icon: {fileID: -3839803715187477772, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1820,7 +1820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &697909330
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2280,6 +2280,46 @@ Prefab:
     - target: {fileID: 1516010144014450, guid: 329762ee18a170048bf7797401ca7de7, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224202663717096062, guid: 329762ee18a170048bf7797401ca7de7,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.71484756
+      objectReference: {fileID: 0}
+    - target: {fileID: 224305120756982980, guid: 329762ee18a170048bf7797401ca7de7,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.18588257
+      objectReference: {fileID: 0}
+    - target: {fileID: 224883780180475550, guid: 329762ee18a170048bf7797401ca7de7,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.010002136
+      objectReference: {fileID: 0}
+    - target: {fileID: 224504012806380078, guid: 329762ee18a170048bf7797401ca7de7,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.2323151
+      objectReference: {fileID: 0}
+    - target: {fileID: 224504012806380078, guid: 329762ee18a170048bf7797401ca7de7,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.659008
+      objectReference: {fileID: 0}
+    - target: {fileID: 224993208379110302, guid: 329762ee18a170048bf7797401ca7de7,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.5195694
+      objectReference: {fileID: 0}
+    - target: {fileID: 224972845268713330, guid: 329762ee18a170048bf7797401ca7de7,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.49664307
+      objectReference: {fileID: 0}
+    - target: {fileID: 224348810636607610, guid: 329762ee18a170048bf7797401ca7de7,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.7015686
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 329762ee18a170048bf7797401ca7de7, type: 2}
@@ -3288,7 +3328,7 @@ GameObject:
   m_Layer: 5
   m_Name: TopLeft
   m_TagString: Untagged
-  m_Icon: {fileID: -4087464717476244675, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3344,7 +3384,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 300
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -3357,7 +3397,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -3394,7 +3434,7 @@ GameObject:
   m_Layer: 5
   m_Name: TopMiddle
   m_TagString: Untagged
-  m_Icon: {fileID: -4087464717476244675, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4010,7 +4050,7 @@ GameObject:
   m_Layer: 5
   m_Name: UndergroundMiddle
   m_TagString: Untagged
-  m_Icon: {fileID: -3839803715187477772, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4144,6 +4184,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 17cd8e364e15bd74e8d47406c2674e9b,
         type: 2}
+    - target: {fileID: 224615033330561774, guid: 1ebb8a5e9c7c7cc42b34369317e768a8,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.9700012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ebb8a5e9c7c7cc42b34369317e768a8, type: 2}
   m_IsPrefabParent: 0
@@ -4301,7 +4346,7 @@ GameObject:
   m_Layer: 5
   m_Name: Place1
   m_TagString: Untagged
-  m_Icon: {fileID: -1577725955494882426, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4435,6 +4480,11 @@ Prefab:
       propertyPath: m_Text
       value: 3.
       objectReference: {fileID: 0}
+    - target: {fileID: 224615033330561774, guid: 1ebb8a5e9c7c7cc42b34369317e768a8,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.9700012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ebb8a5e9c7c7cc42b34369317e768a8, type: 2}
   m_IsPrefabParent: 0
@@ -4457,7 +4507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1294938757
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4855,7 +4905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1436251401
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5185,6 +5235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exampleSwitch: {fileID: 11400000, guid: 9d0ed0dd3f99b45488caf3132ac003f3, type: 2}
   correctAnswer: {fileID: 11400000, guid: 180d473f7c926a14f88f716fc661c63c, type: 2}
+  toggles10: {fileID: 11400000, guid: b139db6ff12b1dd4aa00eef3c215e646, type: 2}
   inputResultText: {fileID: 2041043244}
   mathExamp: {fileID: 2084318136}
   invisible: {fileID: 1595505190}
@@ -5740,7 +5791,7 @@ GameObject:
   m_Layer: 5
   m_Name: UserTopRight
   m_TagString: Untagged
-  m_Icon: {fileID: -4087464717476244675, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5893,7 +5944,7 @@ GameObject:
   m_Layer: 5
   m_Name: BottomMiddle
   m_TagString: Untagged
-  m_Icon: {fileID: -2349822300998112484, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5985,7 +6036,7 @@ GameObject:
   m_Layer: 5
   m_Name: UserBottom
   m_TagString: Untagged
-  m_Icon: {fileID: -4087464717476244675, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -10988,7 +11039,7 @@ GameObject:
   m_Layer: 5
   m_Name: Place2
   m_TagString: Untagged
-  m_Icon: {fileID: -1577725955494882426, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -11289,6 +11340,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 7bb5c815b64d00246ab76ccef67ed2b3,
         type: 2}
+    - target: {fileID: 224615033330561774, guid: 1ebb8a5e9c7c7cc42b34369317e768a8,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.9700012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ebb8a5e9c7c7cc42b34369317e768a8, type: 2}
   m_IsPrefabParent: 0
@@ -11456,7 +11512,7 @@ Prefab:
     - target: {fileID: 224474751750337560, guid: d345a923a8315b244b13adc141f79ef0,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1.0550001
+      value: 1.0550003
       objectReference: {fileID: 0}
     - target: {fileID: 224474751750337560, guid: d345a923a8315b244b13adc141f79ef0,
         type: 2}
@@ -11471,7 +11527,7 @@ Prefab:
     - target: {fileID: 224474751750337560, guid: d345a923a8315b244b13adc141f79ef0,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.029999971
+      value: 0.030000687
       objectReference: {fileID: 0}
     - target: {fileID: 224474751750337560, guid: d345a923a8315b244b13adc141f79ef0,
         type: 2}
@@ -11592,6 +11648,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 224382143752713388, guid: d345a923a8315b244b13adc141f79ef0,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.9401169
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d345a923a8315b244b13adc141f79ef0, type: 2}
   m_IsPrefabParent: 0
@@ -11705,7 +11766,7 @@ GameObject:
   m_Layer: 5
   m_Name: Place3
   m_TagString: Untagged
-  m_Icon: {fileID: -1577725955494882426, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -12275,7 +12336,7 @@ GameObject:
   m_Layer: 5
   m_Name: BottomLeft
   m_TagString: Untagged
-  m_Icon: {fileID: -2349822300998112484, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -12308,7 +12369,7 @@ GameObject:
   m_Layer: 5
   m_Name: Place4
   m_TagString: Untagged
-  m_Icon: {fileID: -1577725955494882426, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -12650,7 +12711,7 @@ GameObject:
   m_Layer: 5
   m_Name: UndergroundMiddleTop
   m_TagString: Untagged
-  m_Icon: {fileID: -3839803715187477772, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

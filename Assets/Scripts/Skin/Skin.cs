@@ -6,7 +6,7 @@ using UnityEngine;
 public class Skin : MonoBehaviour 
 {
 	public ButtonSkinData buttonSkin;
-	public ButtonTypeData buttonType;
+	public ButtonColorData buttonType;
 
 	protected virtual void OnSkinUI()
 	{
