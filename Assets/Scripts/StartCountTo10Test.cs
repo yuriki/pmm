@@ -66,8 +66,8 @@ public class StartCountTo10Test : MonoBehaviour
 	public void StartTest ()
 	{
 		digits.SetActive(true);
-		StartCoroutine(this.GetComponent<Actions>().Move(digits, bottomMiddle, 0.5f));
-		StartCoroutine(this.GetComponent<Actions>().Move(instruction, bottomRight, 0.5f));
+		StartCoroutine(this.GetComponent<Actions>().Move(digits, bottomMiddle, 0.3f));
+		StartCoroutine(this.GetComponent<Actions>().Move(instruction, bottomRight, 0.3f));
 
 		userInput.SetActive(true);
 
