@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: CorrectAnswersNumber
   m_EditorClassIdentifier: 
   DeveloperDescription: Number of CORRECT answers
-  Value: 10
+  Value: 5
