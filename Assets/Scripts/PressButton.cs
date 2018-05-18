@@ -3,12 +3,17 @@ using UnityEngine.UI;
 
 public class PressButton : MonoBehaviour
 {
-	public NonRangedStateData correctAnswer;
+	
 	public GameObject userInputTextObj;
 	public Text questionMarkGreen;
 	public GameObject questionMarkRed;
 	public Text invisible;
 	public AudioSource sound;
+
+	[Header("States")]
+	public NonRangedStateData correctAnswer;
+	public StateData digitsNumber;
+
 	Text userInputText;
 
 	Vector3 scale = new Vector3 (0.6f,0.6f,0f);
@@ -41,7 +46,7 @@ public class PressButton : MonoBehaviour
 
 			questionMarkGreen.text = "";
 		}
-		else if (userInputText.text.Length < 3)
+		else if (userInputText.text.Length < digitsNumber.Value)
 		{
 			//if this is example in column I changing order of digits in answer
 			if (this.GetComponent<ExampleGenerator>().exampleSwitch.Value == 2)
@@ -69,7 +74,7 @@ public class PressButton : MonoBehaviour
 				WobbleUsersInputDigit();
 			}
 		}
-		else if (userInputText.text.Length >= 3)
+		else if (userInputText.text.Length >= digitsNumber.Value)
 		{
 			WobbleUsersInputDigit();
 		}

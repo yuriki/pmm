@@ -9,6 +9,7 @@ public class ExampleGenerator : MonoBehaviour
 	public StateData exampleSwitch;
 	public NonRangedStateData correctAnswer;
 	public MultTableToggles toggles10;
+	public StateData digitsNumber;
 
 	[Header("Text")]
 	public Text inputResultText;
@@ -21,6 +22,7 @@ public class ExampleGenerator : MonoBehaviour
 	[Header("Destination places")]
 	public Transform userBottom;
 	public Transform userTopLeft;
+	public Transform userTopRight;
 
 	int generated; 
 	int tmpGenerated;
@@ -42,6 +44,8 @@ public class ExampleGenerator : MonoBehaviour
 
 	public void NewExample ()
 	{
+		digitsNumber.Value = 3;
+
 		inputResultText.text = "";
 		questionMark.GetComponent<Text>().text = "?";
 
@@ -68,9 +72,9 @@ public class ExampleGenerator : MonoBehaviour
 	}
 
 
-	void MoveQuestionMarkInside()
+	void MoveUserInputMarker(Transform destination)
 	{
-		inputResultText.transform.position = userTopLeft.position;
+		inputResultText.transform.position = destination.position;
 	}
 
 	void ArrangeColumnExample()
@@ -139,7 +143,6 @@ public class ExampleGenerator : MonoBehaviour
 				randomToggle = 0;
 			}
 		}
-		
 
 		signInt = ChooseSign();
 		if (signInt == -1)
@@ -197,6 +200,9 @@ public class ExampleGenerator : MonoBehaviour
 		//For "9-?=3" type of example I rearranging example to put question mark INSIDE
 		if (randomToggle == 2)
 		{
+			//IMPORTANT changing this value I'm doing imposible for user to input more than 1 digit in answer
+			digitsNumber.Value = 1;
+
 			correctAnswer.Value = generated + signInt * generated2;
 
 			//if correct answer is 10 I need rearrange example to fix question mark position
@@ -204,7 +210,7 @@ public class ExampleGenerator : MonoBehaviour
 			{
 				if (!isThisSecondAnswer10InRow)
 				{
-					MoveQuestionMarkInside();
+					MoveUserInputMarker(userTopLeft);
 				}
 				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), offset);
 				isThisSecondAnswer10InRow = true;
@@ -212,7 +218,7 @@ public class ExampleGenerator : MonoBehaviour
 			else
 			{
 				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 0);
-				MoveQuestionMarkInside();
+				MoveUserInputMarker(userTopLeft);
 				isThisSecondAnswer10InRow = false;
 			}
 			
@@ -223,6 +229,9 @@ public class ExampleGenerator : MonoBehaviour
 		}
 		else //for other type of examples - "1+5=?" and "6-4=?"
 		{
+			MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 0);
+			MoveUserInputMarker(userTopRight);
+
 			mathExamp.text = generated + signStr + generated2 + "=";
 			correctAnswer.Value = generated + signInt * generated2;
 		}
@@ -246,8 +255,8 @@ public class ExampleGenerator : MonoBehaviour
 		{
 			if (toggles10.toggles[0] && toggles10.toggles[1])
 			{
-				randomToggle = UnityEngine.Random.Range(0, 2);
-				if (randomToggle == 1)
+				
+				if (UnityEngine.Random.Range(0, 2) == 1)
 				{
 					return -1;
 				}

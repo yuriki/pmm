@@ -799,7 +799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.42552114}
-  m_AnchoredPosition: {x: 62.249023, y: 548.10474}
+  m_AnchoredPosition: {x: 62.249023, y: 548.1048}
   m_SizeDelta: {x: -122.50195, y: 548.056}
   m_Pivot: {x: 0.49999994, y: 1.0000001}
 --- !u!1001 &256878735
@@ -5295,6 +5295,7 @@ MonoBehaviour:
   exampleSwitch: {fileID: 11400000, guid: 9d0ed0dd3f99b45488caf3132ac003f3, type: 2}
   correctAnswer: {fileID: 11400000, guid: 180d473f7c926a14f88f716fc661c63c, type: 2}
   toggles10: {fileID: 11400000, guid: b139db6ff12b1dd4aa00eef3c215e646, type: 2}
+  digitsNumber: {fileID: 11400000, guid: 509fc41eec3e56249b4a819889653c79, type: 2}
   inputResultText: {fileID: 2041043244}
   mathExamp: {fileID: 2084318136}
   invisible: {fileID: 1595505190}
@@ -5303,6 +5304,7 @@ MonoBehaviour:
   cross: {fileID: 1763743682}
   userBottom: {fileID: 1649939982}
   userTopLeft: {fileID: 771466372}
+  userTopRight: {fileID: 1584979004}
 --- !u!114 &1535636754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5497,12 +5499,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559432d9eab01354991cda01a16f886c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnswer: {fileID: 11400000, guid: 180d473f7c926a14f88f716fc661c63c, type: 2}
   userInputTextObj: {fileID: 2041043242}
   questionMarkGreen: {fileID: 2123901754}
   questionMarkRed: {fileID: 1309132236}
   invisible: {fileID: 1595505190}
   sound: {fileID: 471697056}
+  correctAnswer: {fileID: 11400000, guid: 180d473f7c926a14f88f716fc661c63c, type: 2}
+  digitsNumber: {fileID: 11400000, guid: 509fc41eec3e56249b4a819889653c79, type: 2}
 --- !u!114 &1535636764
 MonoBehaviour:
   m_ObjectHideFlags: 0
