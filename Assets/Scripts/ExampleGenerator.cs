@@ -40,8 +40,6 @@ public class ExampleGenerator : MonoBehaviour
 	int j;
 
 	bool isFirstTimeWobble = true;
-	//bool isThisSecondAnswer10InRow;
-	//bool isThisFirst10AnswerAfterNormalExample;
 
 
 	public void NewExample ()
@@ -79,6 +77,7 @@ public class ExampleGenerator : MonoBehaviour
 		inputResultText.transform.position = destination.position;
 	}
 
+
 	void ArrangeColumnExample()
 	{
 		inputResultText.transform.position = userBottom.position;
@@ -90,10 +89,6 @@ public class ExampleGenerator : MonoBehaviour
 		Vector2 crossPivot = cross.pivot;
 		crossPivot.x = 1f;
 		cross.pivot = crossPivot;
-
-		//Vector2 ofs = cross.offsetMin;
-		//ofs.x = 133;
-		//cross.offsetMin = ofs;
 
 		questionMark.GetComponent<Text>().alignment = TextAnchor.MiddleRight;
 	}
@@ -196,9 +191,6 @@ public class ExampleGenerator : MonoBehaviour
 			}
 		}
 
-		//TODO Forbid to print more than one digit for example "9-?=3"
-
-
 		//For "9-?=3" type of example I rearranging example to put question mark INSIDE
 		if (randomToggle == 2)
 		{
@@ -210,27 +202,13 @@ public class ExampleGenerator : MonoBehaviour
 			//if correct answer is 10 I need rearrange example to fix question mark position
 			if (correctAnswer.Value == 10)
 			{
-				//if (!isThisSecondAnswer10InRow)
-				//{
-				//	MoveUserInputMarker(userTopLeft);
-				//}
-				//if (!isThisFirst10AnswerAfterNormalExample)
-				//{
-				//	MoveUserInputMarker(userTopLeft);
-				//}
-
 				MoveUserInputMarker(userTopLeft);
 				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), offsetForTen);
-				
-				//isThisSecondAnswer10InRow = true;
-				//isThisFirst10AnswerAfterNormalExample = false;
 			}
 			else
 			{
 				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), offset);
 				MoveUserInputMarker(userTopLeft);
-				//isThisSecondAnswer10InRow = false;
-				//isThisFirst10AnswerAfterNormalExample = false;
 			}
 			
 			mathExamp.text = generated + signStr + "   " + "=" + correctAnswer.Value;
@@ -243,16 +221,10 @@ public class ExampleGenerator : MonoBehaviour
 			MoveUserInputMarker(userTopRight);
 			MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 0);
 			
-
 			mathExamp.text = generated + signStr + generated2 + "=";
 			correctAnswer.Value = generated + signInt * generated2;
-
-			//isThisSecondAnswer10InRow = false;
-			//isThisFirst10AnswerAfterNormalExample = true;
 		}
 		
-		
-
 	}
 
 
@@ -298,6 +270,7 @@ public class ExampleGenerator : MonoBehaviour
 			return 1;
 		}
 	}
+
 
 	void GenerateMultiplicationTableExample ()
 	{

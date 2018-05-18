@@ -34,7 +34,7 @@ public class TwoLevelsToggle : MonoBehaviour
 	{
 		if(isSecondLevel)
 		{
-			SaveTogglesStates(); //TODO
+			SaveTogglesStates(); //TODO save toggle states
 			this.GetComponent<LoadLevel>().LoadScene(2);
 		}
 
