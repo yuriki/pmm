@@ -14,4 +14,4 @@ MonoBehaviour:
   DeveloperDescription: '0 - plus, 1 - minus,
 
     3 - unknown (10-?=3)'
-  toggles: 000001
+  toggles: 000101
