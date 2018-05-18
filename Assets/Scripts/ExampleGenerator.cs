@@ -4,6 +4,7 @@ using System.Collections;
 
 public class ExampleGenerator : MonoBehaviour 
 {
+	public float offset;
 	[Header("States")]
 	public StateData exampleSwitch;
 	public NonRangedStateData correctAnswer;
@@ -19,6 +20,7 @@ public class ExampleGenerator : MonoBehaviour
 
 	[Header("Destination places")]
 	public Transform userBottom;
+	public Transform userTopLeft;
 
 	int generated; 
 	int tmpGenerated;
@@ -35,6 +37,7 @@ public class ExampleGenerator : MonoBehaviour
 	int j;
 
 	bool isFirstTimeWobble = true;
+	bool isThisSecondAnswer10InRow;
 
 
 	public void NewExample ()
@@ -64,6 +67,11 @@ public class ExampleGenerator : MonoBehaviour
 		}
 	}
 
+
+	void MoveQuestionMarkInside()
+	{
+		inputResultText.transform.position = userTopLeft.position;
+	}
 
 	void ArrangeColumnExample()
 	{
@@ -118,14 +126,7 @@ public class ExampleGenerator : MonoBehaviour
 
 	void GenerateCountTo10Example ()
 	{
-		//int len = toggles10.toggles.Length;
-
-		//foreach (var opt in toggles10.toggles)
-		//{
-
-		//}
-
-		//choosing subtype of example based on user activated toggles
+		//randomly choosing subtype of example based on user activated toggles (in TwoLevelsButton)
 		randomToggle = UnityEngine.Random.Range(0, 3);
 		while (!toggles10.toggles[randomToggle])
 		{
@@ -138,92 +139,7 @@ public class ExampleGenerator : MonoBehaviour
 				randomToggle = 0;
 			}
 		}
-
-
-		//if (randomToggle == 0)
-		//{
-		//	// tmpGenerated = generated = 0 after first initialization
-		//	// I'm making next generated value different from previous one (tmpGenerated)
-		//	while (tmpGenerated == generated)
-		//	{ 
-		//		generated = UnityEngine.Random.Range(1, 10);
-		//	}
-		//	tmpGenerated = generated;
-
-		//	generated2 = UnityEngine.Random.Range(1, 10);
-		//	while (/*tmpGenerated2 == generated2 &&*/ (generated2 + generated) > 10)
-		//	{
-		//		generated2 = UnityEngine.Random.Range(1, 10);
-		//	}
-
-		//	mathExamp.text = generated.ToString() + "+" + generated2.ToString() + "=";
-		//	correctAnswer.Value = generated + generated2;
-		//}
-		//else if (randomToggle == 1)
-		//{
-		//	// tmpGenerated = generated = 0 after first initialization
-		//	// I'm making next generated value different from previous one (tmpGenerated)
-		//	while (tmpGenerated == generated)
-		//	{
-		//		generated = UnityEngine.Random.Range(1, 10);
-		//	}
-		//	tmpGenerated = generated;
-
-		//	generated2 = UnityEngine.Random.Range(1, 10);
-		//	while (/*tmpGenerated2 == generated2 &&*/ (generated - generated2) < 0)
-		//	{
-		//		generated2 = UnityEngine.Random.Range(1, 10);
-		//	}
-
-		//	mathExamp.text = generated.ToString() + "-" + generated2.ToString() + "=";
-		//	correctAnswer.Value = generated - generated2;
-		//}
-		//else if (randomToggle == 2)
-		//{
-		//	// tmpGenerated = generated = 0 after first initialization
-		//	// I'm making next generated value different from previous one (tmpGenerated)
-		//	while (tmpGenerated == generated)
-		//	{
-		//		generated = UnityEngine.Random.Range(1, 10);
-		//	}
-		//	tmpGenerated = generated;
-
-		//	if (toggles10.toggles[0] && toggles10.toggles[1])
-		//	{
-		//		randomToggle = UnityEngine.Random.Range(0, 2);
-		//		if (randomToggle == 1)
-		//		{
-		//			randomToggle = -1;
-		//			sign = "-";
-		//		}
-		//		else
-		//		{
-		//			randomToggle = 1;
-		//			sign = "+";
-		//		}
-		//	}
-		//	else if (toggles10.toggles[1])
-		//	{
-		//		randomToggle = -1;
-		//		sign = "-";
-		//	}
-		//	else
-		//	{
-		//		randomToggle = 1;
-		//		sign = "+";
-		//	}
-
-		//	generated2 = UnityEngine.Random.Range(1, 10);
-		//	while (/*tmpGenerated2 == generated2 &&*/ (generated + randomToggle * generated2) < 0 && (generated + randomToggle * generated2) > 10)
-		//	{
-		//		generated2 = UnityEngine.Random.Range(1, 10);
-		//	}
-
-		//	mathExamp.text = generated.ToString() + sign + "^" + generated2.ToString() + "=";
-		//	correctAnswer.Value = generated + randomToggle * generated2;
-		//}
-
-
+		
 
 		signInt = ChooseSign();
 		if (signInt == -1)
@@ -236,7 +152,7 @@ public class ExampleGenerator : MonoBehaviour
 		}
 
 		// tmpGenerated = generated = 0 after first initialization
-		// I'm making next generated value different from previous one (tmpGenerated)
+		// I'm making next generated value different from previous one (different from tmpGenerated)
 		while (tmpGenerated == generated)
 		{
 			generated = UnityEngine.Random.Range(1, 10);
@@ -244,6 +160,8 @@ public class ExampleGenerator : MonoBehaviour
 		tmpGenerated = generated;
 
 		generated2 = UnityEngine.Random.Range(1, 10);
+		
+		//initializing counters of while loop cycles
 		i = 1;
 		j = 1;
 		//IMPORTANT I can use expression "==0" here only if I regenerate variable "generated". Oterwise I have infinite loop
@@ -272,10 +190,53 @@ public class ExampleGenerator : MonoBehaviour
 				i = 1;
 			}
 		}
-		//TODO make rearrangement for "10-?=3" type of example
-		mathExamp.text = generated + signStr + "^" + generated2 + "=";
-		correctAnswer.Value = generated + signInt * generated2;
 
+		//TODO Forbid to print more than one digit for example "9-?=3"
+
+
+		//For "9-?=3" type of example I rearranging example to put question mark INSIDE
+		if (randomToggle == 2)
+		{
+			correctAnswer.Value = generated + signInt * generated2;
+
+			//if correct answer is 10 I need rearrange example to fix question mark position
+			if (correctAnswer.Value == 10)
+			{
+				if (!isThisSecondAnswer10InRow)
+				{
+					MoveQuestionMarkInside();
+				}
+				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), offset);
+				isThisSecondAnswer10InRow = true;
+			}
+			else
+			{
+				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 0);
+				MoveQuestionMarkInside();
+				isThisSecondAnswer10InRow = false;
+			}
+			
+			mathExamp.text = generated + signStr + "   " + "=" + correctAnswer.Value;
+
+			//real correct answer for example "9-?=3" equals "generated2"
+			correctAnswer.Value = generated2;
+		}
+		else //for other type of examples - "1+5=?" and "6-4=?"
+		{
+			mathExamp.text = generated + signStr + generated2 + "=";
+			correctAnswer.Value = generated + signInt * generated2;
+		}
+		
+		
+
+	}
+
+
+	void MoveRightSideOfRectTransform(RectTransform rect, float value)
+	{
+		Vector2 ofs = rect.offsetMax;
+		ofs.x = value;
+		rect.offsetMax = ofs;
 	}
 
 
