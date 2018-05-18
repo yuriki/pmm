@@ -5,6 +5,7 @@ using System.Collections;
 public class ExampleGenerator : MonoBehaviour 
 {
 	public float offset;
+	public float offsetForTen;
 	[Header("States")]
 	public StateData exampleSwitch;
 	public NonRangedStateData correctAnswer;
@@ -39,7 +40,8 @@ public class ExampleGenerator : MonoBehaviour
 	int j;
 
 	bool isFirstTimeWobble = true;
-	bool isThisSecondAnswer10InRow;
+	//bool isThisSecondAnswer10InRow;
+	//bool isThisFirst10AnswerAfterNormalExample;
 
 
 	public void NewExample ()
@@ -208,18 +210,27 @@ public class ExampleGenerator : MonoBehaviour
 			//if correct answer is 10 I need rearrange example to fix question mark position
 			if (correctAnswer.Value == 10)
 			{
-				if (!isThisSecondAnswer10InRow)
-				{
-					MoveUserInputMarker(userTopLeft);
-				}
-				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), offset);
-				isThisSecondAnswer10InRow = true;
+				//if (!isThisSecondAnswer10InRow)
+				//{
+				//	MoveUserInputMarker(userTopLeft);
+				//}
+				//if (!isThisFirst10AnswerAfterNormalExample)
+				//{
+				//	MoveUserInputMarker(userTopLeft);
+				//}
+
+				MoveUserInputMarker(userTopLeft);
+				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), offsetForTen);
+				
+				//isThisSecondAnswer10InRow = true;
+				//isThisFirst10AnswerAfterNormalExample = false;
 			}
 			else
 			{
-				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 0);
+				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), offset);
 				MoveUserInputMarker(userTopLeft);
-				isThisSecondAnswer10InRow = false;
+				//isThisSecondAnswer10InRow = false;
+				//isThisFirst10AnswerAfterNormalExample = false;
 			}
 			
 			mathExamp.text = generated + signStr + "   " + "=" + correctAnswer.Value;
@@ -229,11 +240,15 @@ public class ExampleGenerator : MonoBehaviour
 		}
 		else //for other type of examples - "1+5=?" and "6-4=?"
 		{
-			MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 0);
 			MoveUserInputMarker(userTopRight);
+			MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 0);
+			
 
 			mathExamp.text = generated + signStr + generated2 + "=";
 			correctAnswer.Value = generated + signInt * generated2;
+
+			//isThisSecondAnswer10InRow = false;
+			//isThisFirst10AnswerAfterNormalExample = true;
 		}
 		
 		
