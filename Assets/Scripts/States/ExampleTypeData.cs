@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Yuriki's ScriptableObj assets/ExampleTypes/ExampleTypeData", fileName = "10")]
+[CreateAssetMenu(menuName = "Yuriki's ScriptableObj assets/ExampleTypesData/ExampleTypes", fileName = "10")]
 public class ExampleTypeData : ScriptableObject
 {
 

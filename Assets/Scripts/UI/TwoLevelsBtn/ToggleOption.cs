@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ToggleOption : MonoBehaviour
 {
-	public MultTableToggles options;
+	public ExampleTogglesData options;
 	public int id;
 
 

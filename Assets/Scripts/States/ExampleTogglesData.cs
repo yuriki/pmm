@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Yuriki's ScriptableObj assets/Toggles/MultTableToggles", fileName = "MultTableToggles")]
-public class MultTableToggles : ScriptableObject
+[CreateAssetMenu(menuName = "Yuriki's ScriptableObj assets/ExampleTypesData/Toggles", fileName = "MultTableToggles")]
+public class ExampleTogglesData : ScriptableObject
 {
 
 	#if UNITY_EDITOR

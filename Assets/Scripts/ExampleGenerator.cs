@@ -9,8 +9,13 @@ public class ExampleGenerator : MonoBehaviour
 	[Header("States")]
 	public StateData exampleSwitch;
 	public NonRangedStateData correctAnswer;
-	public MultTableToggles toggles10;
 	public StateData digitsNumber;
+
+	[Header("Toggles")]
+	public ExampleTogglesData toggles5;
+	public ExampleTogglesData toggles10;
+	public ExampleTogglesData togglesMult;
+	public ExampleTogglesData togglesColumn;
 
 	[Header("Text")]
 	public Text inputResultText;
