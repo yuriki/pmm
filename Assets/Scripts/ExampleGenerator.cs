@@ -39,35 +39,39 @@ public class ExampleGenerator : MonoBehaviour
 	int randomToggle;
 	int signInt;
 	string signStr;
+	int digitMultTable;
+
+	int minRandomValue;
 
 	// counters to help get rid of infinite while-loop
 	int i;
 	int j;
+	int k;
 
 	bool isFirstTimeWobble = true;
 
 
 	public void NewExample ()
 	{
+		//set limit of digits user can input (print on screen)
 		digitsNumber.Value = 3;
 
 		inputResultText.text = "";
 		questionMark.GetComponent<Text>().text = "?";
 
-		if (exampleSwitch.Value == 0)
+		if (exampleSwitch.Value == 0)                   //up to ten example 9-1=?, 9+1=?, 9-?=3
 		{
 			GenerateCountTo10Example();
 		}
-		else if (exampleSwitch.Value == 1)
+		else if (exampleSwitch.Value == 1)				//multiplication table example 3x4=?
 		{
 			GenerateMultiplicationTableExample();
 		}
-		else if (exampleSwitch.Value == 2)
+		else if (exampleSwitch.Value == 2)				//column example
 		{
 			GenerateColumnExample();
 			ArrangeColumnExample();
 		}
-
 
 		if (isFirstTimeWobble)
 		{
@@ -130,21 +134,50 @@ public class ExampleGenerator : MonoBehaviour
 	}
 
 
-	void GenerateCountTo10Example ()
+	int ChooseFirstRandomToggle(ExampleTogglesData toglesData)
 	{
-		//randomly choosing subtype of example based on user activated toggles (in TwoLevelsButton)
-		randomToggle = UnityEngine.Random.Range(0, 3);
-		while (!toggles10.toggles[randomToggle])
+		i = 1;
+
+		//choosing MIN value for Random function (min value I need to choose only numbers when this is MultTable example)
+		if (exampleSwitch.Value == 1)
 		{
-			if (randomToggle != 2)
+			minRandomValue = 2;
+		}
+		else
+		{
+			minRandomValue = 0;
+		}
+
+		randomToggle = UnityEngine.Random.Range(minRandomValue, toglesData.toggles.Length);
+		while (!toglesData.toggles[randomToggle])
+		{
+			if (randomToggle != toglesData.toggles.Length - 1)
 			{
 				randomToggle++;
 			}
 			else
 			{
-				randomToggle = 0;
+				randomToggle = minRandomValue;
 			}
+
+			//Foolproof. In case NO toggles were selected, the default value will be chosen (PLUS for all type examples or 2 for MultTable)
+			i++;
+			if (i > 20) //20 because I want cycle go through twice before exit with default value
+			{
+				randomToggle = minRandomValue;
+				break;
+			}
+
 		}
+		return randomToggle;
+	}
+
+
+	void GenerateCountTo10Example ()
+	{
+		//randomly choosing subtype of example based on user activated toggles (in TwoLevelsButton)
+		randomToggle = ChooseFirstRandomToggle(toggles10);
+
 
 		signInt = ChooseSign();
 		if (signInt == -1)
@@ -172,6 +205,7 @@ public class ExampleGenerator : MonoBehaviour
 		//IMPORTANT I can use expression "==0" here only if I regenerate variable "generated". Oterwise I have infinite loop
 		while ((generated + signInt * generated2) <= 0 || (generated + signInt * generated2) > 10 )
 		{
+			//protection against too often zero result (zero result could be only if we have two the same values 3-3=0, 8-8=0)
 			if ((generated + signInt * generated2) == 0)
 			{
 				j++;
@@ -279,17 +313,81 @@ public class ExampleGenerator : MonoBehaviour
 
 	void GenerateMultiplicationTableExample ()
 	{
+		//randomly choosing subtype of example based on user activated toggles (in TwoLevelsButton)
+		randomToggle = ChooseFirstRandomToggle(togglesMult);
+
+
+
+		//TODO make generated and generated2 switch places (for mult ONLY and not for divistion): 2x9=? --> 9x2=?
+
+
 		// tmpGenerated = generated = 0 after first initialization
 		// I'm making next generated value different from previous one (tmpGenerated)
-		while (tmpGenerated == generated)
-			generated = UnityEngine.Random.Range(1, 11);
-		tmpGenerated = generated;
+		//while (tmpGenerated == generated)
+		//	generated = UnityEngine.Random.Range(1, 11);
+		//tmpGenerated = generated;
 
+		i = 1;
+		j = 1;
+		k = 1;
 		while (tmpGenerated2 == generated2)
-			generated2 = UnityEngine.Random.Range(1, 11);
+		{
+			generated2 = UnityEngine.Random.Range(0, 11);
+
+			//protection against simple examples
+			//too often zero value
+			if (generated2 == 0)
+			{
+				if (i < 3)
+				{
+					generated2 = UnityEngine.Random.Range(0, 11);
+				}
+				i++;
+			}
+			//too often one value
+			if (generated2 == 1)
+			{
+				if (j < 3)
+				{
+					generated2 = UnityEngine.Random.Range(0, 11);
+				}
+				j++;
+			}
+			//too often ten value
+			if (generated2 == 10)
+			{
+				if (k < 1)
+				{
+					generated2 = UnityEngine.Random.Range(0, 11);
+				}
+				k++;
+			}
+		}
 		tmpGenerated2 = generated2;
 
-		mathExamp.text = generated.ToString() + "×" + generated2.ToString() + "=";
-		correctAnswer.Value = generated * generated2;
+
+		//if division is ON
+		if (togglesMult.toggles[0])
+		{
+			//I'm generating here not two (0 and 1), but 4 values (0, 1, 2, 3). 
+			//This means division examples will be generated 3x times more often than multiplication examples
+			if (UnityEngine.Random.Range(0, 4) == 0)
+			{
+				mathExamp.text = randomToggle + "×" + generated2 + "=";
+				correctAnswer.Value = randomToggle * generated2;
+			}
+			else
+			{
+				mathExamp.text = randomToggle * generated2 + "÷" + randomToggle + "=";
+				correctAnswer.Value = generated2;
+			}
+		}
+		else
+		{
+			mathExamp.text = randomToggle + "×" + generated2 + "=";
+			correctAnswer.Value = randomToggle * generated2;
+		}
+
+
 	}
 }

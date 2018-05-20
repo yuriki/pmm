@@ -14,4 +14,4 @@ MonoBehaviour:
   DeveloperDescription: '0 - division, 1 - free
 
     2-2, 3-3,...9-9'
-  toggles: 00000000000000000000
+  toggles: 01010000000001010101
