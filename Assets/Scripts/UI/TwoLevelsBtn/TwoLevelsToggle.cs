@@ -6,8 +6,9 @@ using System;
 
 public class TwoLevelsToggle : MonoBehaviour
 {
-	public GameObject SmallFlowerTogglesHolder;
+	public GameObject SecondLevelTogglesHolder;
 	public GameObject[] otherButtons;
+	public GameObject[] otherButtonsPos;
 
 	[Header("Settings for timing")]
 	public float distanceMyltiplier;
@@ -20,7 +21,6 @@ public class TwoLevelsToggle : MonoBehaviour
 	bool isSecondLevel;
 	Vector3 scale;
 	Vector3 direction;
-	Vector3 tmp;
 
 
 	void Start()
@@ -41,26 +41,18 @@ public class TwoLevelsToggle : MonoBehaviour
 		if (!isSecondLevel)
 		{
 			ChangeScale(0.7f);
-			ToggleSmallFlowerBtns();
+			ToggleSecondLevelBtns();
 			label.text = exampleType.shortButtonName;
 
 			//spread buttons around asunder
-			foreach (var button in otherButtons)
+			for (int i = 0; i < otherButtons.Length; i++)
 			{
-				direction = Vector3.Normalize(button.transform.position - this.transform.position);
+				//making button NONinteractable (because someone can push two or more buttons together with two or more fingers)
+				otherButtons[i].GetComponentInChildren<Button>().interactable = false;
 
-				//save x position as PosZ
-				tmp = button.transform.position;
-				tmp.z = button.transform.position.x;
-				button.transform.position = tmp;
+				direction = Vector3.Normalize(otherButtons[i].transform.position - this.transform.position);
 
-				//save y position as ScaleZ
-				tmp.x = 1;
-				tmp.y = 1;
-				tmp.z = button.transform.position.y;
-				button.transform.localScale = tmp;
-
-				iTween.MoveTo(button, iTween.Hash("x", distanceMyltiplier*direction.x, "y", distanceMyltiplier*direction.y, "time", time, "easetype", "easeInQuad"));
+				iTween.MoveTo(otherButtons[i], iTween.Hash("x", distanceMyltiplier * direction.x, "y", distanceMyltiplier * direction.y, "time", time, "easetype", "easeInQuad"));
 			}
 			isSecondLevel = true;
 		}
@@ -78,17 +70,15 @@ public class TwoLevelsToggle : MonoBehaviour
 		ChangeScale(1f);
 
 		label.text = exampleType.buttonName;
-		ToggleSmallFlowerBtns();
+		ToggleSecondLevelBtns();
 
-		//brings all buttons aroud back
-		foreach (var button in otherButtons)
+		//brings all buttons around back
+		for (int i = 0; i < otherButtons.Length; i++)
 		{
-			direction.x = button.transform.position.z;
-			direction.y = button.transform.localScale.z;
-			direction.z = 0;
-			iTween.MoveTo(button, iTween.Hash("x", direction.x, "y", direction.y, "z", direction.z, "time", time));
+			//making button interactable back again
+			otherButtons[i].GetComponentInChildren<Button>().interactable = true;
 
-			button.transform.localScale = new Vector3 (1f, 1f, 1f);
+			iTween.MoveTo(otherButtons[i], iTween.Hash("x", otherButtonsPos[i].transform.position.x, "y", otherButtonsPos[i].transform.position.y, "time", time));
 		}
 
 		isSecondLevel = false;
@@ -104,9 +94,9 @@ public class TwoLevelsToggle : MonoBehaviour
 	}
 
 
-	void ToggleSmallFlowerBtns()
+	void ToggleSecondLevelBtns()
 	{
-		SmallFlowerTogglesHolder.SetActive(!SmallFlowerTogglesHolder.activeInHierarchy);
+		SecondLevelTogglesHolder.SetActive(!SecondLevelTogglesHolder.activeInHierarchy);
 	}
 
 }
