@@ -2148,7 +2148,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 660399408}
-  - component: {fileID: 660399409}
   m_Layer: 5
   m_Name: Mult
   m_TagString: Untagged
@@ -2176,18 +2175,6 @@ RectTransform:
   m_AnchoredPosition: {x: 5, y: 1}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &660399409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 660399407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 190dc119525b35e4aae7a29525013e96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPosition: {fileID: 388416027}
 --- !u!1001 &675773872
 Prefab:
   m_ObjectHideFlags: 0
@@ -5107,18 +5094,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1902397380693390, guid: d345a923a8315b244b13adc141f79ef0,
     type: 2}
   m_PrefabInternal: {fileID: 2024788983}
---- !u!114 &1726207114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1726207113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 190dc119525b35e4aae7a29525013e96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPosition: {fileID: 962274095}
 --- !u!1 &1763614352
 GameObject:
   m_ObjectHideFlags: 0
@@ -5462,7 +5437,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1944311153}
-  - component: {fileID: 1944311154}
   m_Layer: 5
   m_Name: 10
   m_TagString: Untagged
@@ -5490,18 +5464,6 @@ RectTransform:
   m_AnchoredPosition: {x: 2, y: 1}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1944311154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1944311152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 190dc119525b35e4aae7a29525013e96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPosition: {fileID: 1207482753}
 --- !u!1 &1992867301
 GameObject:
   m_ObjectHideFlags: 0
@@ -5795,7 +5757,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2046965053}
-  - component: {fileID: 2046965054}
   m_Layer: 5
   m_Name: 2Rows_Holder4Anim
   m_TagString: Untagged
@@ -5822,18 +5783,6 @@ RectTransform:
   m_AnchoredPosition: {x: 4.920044, y: 3.070984}
   m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2046965054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2046965052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 190dc119525b35e4aae7a29525013e96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPosition: {fileID: 1042344993}
 --- !u!1 &2068484395
 GameObject:
   m_ObjectHideFlags: 0

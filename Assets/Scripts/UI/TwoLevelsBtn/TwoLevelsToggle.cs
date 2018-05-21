@@ -41,6 +41,7 @@ public class TwoLevelsToggle : MonoBehaviour
 		if (!isSecondLevel)
 		{
 			ChangeScale(0.7f);
+			iTween.PunchScale(this.gameObject, iTween.Hash("x", 0.5f, "y", 0.5f, "time", time*0.7));
 			ToggleSecondLevelBtns();
 			label.text = exampleType.shortButtonName;
 
@@ -68,6 +69,7 @@ public class TwoLevelsToggle : MonoBehaviour
 	public void BackToLevelOne()
 	{
 		ChangeScale(1f);
+		iTween.PunchScale(this.gameObject, iTween.Hash("x", 0.5f, "y", 0.5f, "time", time*0.7));
 
 		label.text = exampleType.buttonName;
 		ToggleSecondLevelBtns();
@@ -96,6 +98,7 @@ public class TwoLevelsToggle : MonoBehaviour
 
 	void ToggleSecondLevelBtns()
 	{
+		iTween.PunchScale(SecondLevelTogglesHolder, iTween.Hash("x", 0.9f, "y", 0.9f, "time", time));
 		SecondLevelTogglesHolder.SetActive(!SecondLevelTogglesHolder.activeInHierarchy);
 	}
 
