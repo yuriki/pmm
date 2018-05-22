@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 82866658633806328}
   - component: {fileID: 114309413673619496}
   m_Layer: 0
-  m_Name: CoinCharacterPrefab
+  m_Name: SK_CoinCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

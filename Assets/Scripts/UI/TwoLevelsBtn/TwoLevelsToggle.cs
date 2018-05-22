@@ -12,7 +12,9 @@ public class TwoLevelsToggle : MonoBehaviour
 
 	[Header("Settings for timing")]
 	public float distanceMyltiplier;
-	public float time;
+	public float timeForButtonsAround;
+	public float timeMainButton;
+	public float timeSecondLevelButtons;
 
 	[Header("Type of example this button generates")]
 	public ExampleTypeData exampleType; //corresponds ExampleSwitch StateData (read Developer Description)
@@ -41,8 +43,8 @@ public class TwoLevelsToggle : MonoBehaviour
 		if (!isSecondLevel)
 		{
 			ChangeScale(0.7f);
-			iTween.PunchScale(this.gameObject, iTween.Hash("x", 0.5f, "y", 0.5f, "time", time*0.7));
-			ToggleSecondLevelBtns();
+			iTween.PunchScale(this.gameObject, iTween.Hash("x", 0.5f, "y", 0.5f, "time", timeMainButton));
+			ToggleSecondLevelBtns(false);
 			label.text = exampleType.shortButtonName;
 
 			//spread buttons around asunder
@@ -53,7 +55,7 @@ public class TwoLevelsToggle : MonoBehaviour
 
 				direction = Vector3.Normalize(otherButtons[i].transform.position - this.transform.position);
 
-				iTween.MoveTo(otherButtons[i], iTween.Hash("x", distanceMyltiplier * direction.x, "y", distanceMyltiplier * direction.y, "time", time, "easetype", "easeInQuad"));
+				iTween.MoveTo(otherButtons[i], iTween.Hash("x", distanceMyltiplier * direction.x, "y", distanceMyltiplier * direction.y, "time", timeForButtonsAround, "easetype", "easeInQuad"));
 			}
 			isSecondLevel = true;
 		}
@@ -69,10 +71,10 @@ public class TwoLevelsToggle : MonoBehaviour
 	public void BackToLevelOne()
 	{
 		ChangeScale(1f);
-		iTween.PunchScale(this.gameObject, iTween.Hash("x", 0.5f, "y", 0.5f, "time", time*0.7));
+		iTween.PunchScale(this.gameObject, iTween.Hash("x", 0.5f, "y", 0.5f, "time", timeMainButton));
 
 		label.text = exampleType.buttonName;
-		ToggleSecondLevelBtns();
+		ToggleSecondLevelBtns(true);
 
 		//brings all buttons around back
 		for (int i = 0; i < otherButtons.Length; i++)
@@ -80,7 +82,7 @@ public class TwoLevelsToggle : MonoBehaviour
 			//making button interactable back again
 			otherButtons[i].GetComponentInChildren<Button>().interactable = true;
 
-			iTween.MoveTo(otherButtons[i], iTween.Hash("x", otherButtonsPos[i].transform.position.x, "y", otherButtonsPos[i].transform.position.y, "time", time));
+			iTween.MoveTo(otherButtons[i], iTween.Hash("x", otherButtonsPos[i].transform.position.x, "y", otherButtonsPos[i].transform.position.y, "time", timeForButtonsAround));
 		}
 
 		isSecondLevel = false;
@@ -92,14 +94,23 @@ public class TwoLevelsToggle : MonoBehaviour
 		scale = this.transform.localScale;
 		scale.x = scale.y = scaleValue;
 		this.transform.localScale = scale;
+		//To remain LABEL the same size (after I scaled button down) I need to scale label UP
 		label.transform.gameObject.transform.localScale = new Vector3(1/scaleValue, 1/scaleValue, 1/scaleValue);
 	}
 
 
-	void ToggleSecondLevelBtns()
+	void ToggleSecondLevelBtns(bool isBackToFirstLevel)
 	{
-		iTween.PunchScale(SecondLevelTogglesHolder, iTween.Hash("x", 0.9f, "y", 0.9f, "time", time));
 		SecondLevelTogglesHolder.SetActive(!SecondLevelTogglesHolder.activeInHierarchy);
-	}
+		if (isBackToFirstLevel)
+		{
+			SecondLevelTogglesHolder.transform.localScale = new Vector3(0.4f, 0.4f, 1f);
+		}
+		else
+		{
+			iTween.ScaleTo(SecondLevelTogglesHolder, iTween.Hash("x", 1f, "y", 1f, "time", 0.1f));
+			iTween.PunchScale(SecondLevelTogglesHolder, iTween.Hash("x", 0.9f, "y", 0.9f, "time", timeSecondLevelButtons, "delay", 0.05f));
+		}
 
+	}
 }

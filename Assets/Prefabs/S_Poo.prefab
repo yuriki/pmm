@@ -31,7 +31,7 @@ GameObject:
   - component: {fileID: 82983197432856964}
   - component: {fileID: 114442765091091882}
   m_Layer: 0
-  m_Name: PooPrefab
+  m_Name: S_Poo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

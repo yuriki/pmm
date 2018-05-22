@@ -279,13 +279,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd55d1391a303f409acac3b27049eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SmallFlowerTogglesHolder: {fileID: 0}
+  SecondLevelTogglesHolder: {fileID: 0}
   otherButtons:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  distanceMyltiplier: 10
-  time: 0.35
+  otherButtonsPos: []
+  distanceMyltiplier: 8
+  timeForButtonsAround: 0.2
+  timeMainButton: 0.5
+  timeSecondLevelButtons: 0.3
   exampleType: {fileID: 11400000, guid: 09ca6f5f60ec36547ac0ae107773da37, type: 2}
 --- !u!114 &114906297006077694
 MonoBehaviour:

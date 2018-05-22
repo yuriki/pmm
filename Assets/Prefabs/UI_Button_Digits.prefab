@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 82407103920557134}
   - component: {fileID: 95201110487213244}
   m_Layer: 5
-  m_Name: DigitBtn
+  m_Name: UI_Button_Digits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 222581781355185280}
   - component: {fileID: 114805689748000550}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
