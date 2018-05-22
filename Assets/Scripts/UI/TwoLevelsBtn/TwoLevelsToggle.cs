@@ -42,6 +42,7 @@ public class TwoLevelsToggle : MonoBehaviour
 
 		if (!isSecondLevel)
 		{
+			//TODO add coin sound and not Woonk
 			ChangeScale(0.7f);
 			iTween.PunchScale(this.gameObject, iTween.Hash("x", 0.5f, "y", 0.5f, "time", timeMainButton));
 			ToggleSecondLevelBtns(false);
