@@ -19,9 +19,6 @@ public class Coins : MonoBehaviour
 	public GameObject particlesSmallCoins;
 	public GameObject pooParticles;
 
-	//fly speed of coins for SmoothDamp function
-	float smoothTime = 0.2f;
-
 	//I will put all earned coins to this array to animate them 
 	[NonSerialized]
 	public GameObject[] arrayOfEarnedCoins = new GameObject[10];
@@ -166,7 +163,7 @@ public class Coins : MonoBehaviour
     /// <param name="num">Number of coin</param>
     IEnumerator WaitBeforeNextCoin (int num)
 	{
-		yield return new WaitForSeconds (num*0.1f);
+		yield return new WaitForSeconds (num*0.08f);
 		StartCoroutine (CoinsAnimationAndPay (num));
 	}
 
@@ -181,8 +178,7 @@ public class Coins : MonoBehaviour
 		
 		for (; Vector3.Distance(currentCoin.transform.position, coinsDestinationPlace.position) > 0.1f; )
 		{
-			currentCoin.transform.position =
-					Vector3.MoveTowards(currentCoin.transform.position, coinsDestinationPlace.position, smoothTime);
+			iTween.MoveTo(currentCoin, iTween.Hash("x", coinsDestinationPlace.position.x, "y", coinsDestinationPlace.position.y, "time", .5f, "easetype", "easeInQuad"));
 			yield return 0;
 		}
 

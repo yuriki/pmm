@@ -45,19 +45,20 @@ public class StartCountTo10Test : MonoBehaviour
 		if (resetWrongAnswersNum)
 			WrongAnswersNum.Value = 0;
 
+		//hide unneeded
 		recordsHolder.transform.position = topLeft.position;
 		recordsHolder.SetActive(false);
 
 		timer.SetActive(false);
-
-		startButton.SetActive(true);
 		mathExample.SetActive (false);
 		userInput.SetActive(false);
-
-		instruction.SetActive(true);
-
+		
 		digits.SetActive(false);
 		digits.transform.position = bottomLeft.position;
+
+		//show needed
+		startButton.SetActive(true);
+		instruction.SetActive(true);
 	}
 
 	/// <summary>
@@ -66,8 +67,8 @@ public class StartCountTo10Test : MonoBehaviour
 	public void StartTest ()
 	{
 		digits.SetActive(true);
-		StartCoroutine(this.GetComponent<Actions>().Move(digits, bottomMiddle, 0.3f));
-		StartCoroutine(this.GetComponent<Actions>().Move(instruction, bottomRight, 0.3f));
+		iTween.MoveTo(digits, bottomMiddle.position, .3f);
+		iTween.MoveTo(instruction, bottomRight.position, .8f);
 
 		userInput.SetActive(true);
 

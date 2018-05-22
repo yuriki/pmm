@@ -19,7 +19,6 @@ public class StopCountTo10Test : MonoBehaviour
 	public Transform underground;
 	public Transform topRight;
 	public Transform undergroundTop;
-	public Transform undergroundBottom;
 
 	[Header("Objects to move")]
 	public GameObject digits;
@@ -30,6 +29,7 @@ public class StopCountTo10Test : MonoBehaviour
 	public GameObject victoryImage;
 	public GameObject earnImage;
 	public GameObject againButton;
+	public GameObject exitButton;
 
 
 	[Header("Objects to hide")]
@@ -38,6 +38,8 @@ public class StopCountTo10Test : MonoBehaviour
 
 	public IEnumerator LaunchFinalScoreProcesses()
 	{
+		exitButton.SetActive(false);
+
 		Analytics.CustomEvent("Test_Finished", new Dictionary<string, object>
 		{
 			{"Level_ID",  "Level_" + this.GetComponent<ExampleGenerator>().exampleSwitch.Value},
@@ -49,39 +51,60 @@ public class StopCountTo10Test : MonoBehaviour
 
 		StartCoroutine(this.GetComponent<Records>().LoadOrCreateRecords());
 
-		StartCoroutine(this.GetComponent<Actions>().Move(digits, undergroundBottom, 0.2f));
-		StartCoroutine(this.GetComponent<Actions>().Move(back, underground, 0.2f));
+		digits.GetComponent<RectTransform>().pivot = new Vector2(.5f, .5f);
+		iTween.ScaleTo(digits, iTween.Hash("x", 1.1f, "y", 1.1f, "time", .05f));
+		iTween.ScaleTo(digits, iTween.Hash("x", .01f, "y", .01f, "time", .2f, "easetype", "easeInCirc", "delay", .05f));
+		yield return new WaitForSeconds(0.27f);
+		digits.SetActive(false);
 
-			//time to wait for last coin fall down
-			yield return new WaitForSeconds(0.8f);
-		Vector3 initialScale = new Vector3(1.5f, 1.5f, 1f);
-		usersInput.SetActive (false);
-		mathExample.SetActive (false);
-		StartCoroutine(this.GetComponent<Actions>().Boom(victoryImage, initialScale));
-			yield return new WaitForSeconds(0.2f);
-		StartCoroutine(this.GetComponent<Actions>().Boom(earnImage, initialScale));
-			yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.1f);
+		iTween.MoveTo(back, iTween.Hash("x", underground.position.x, "y", underground.position.y, "time", .5f, "easetype", "easeInOutQuad"));
+
+		//showing VICTORY! sign
+		yield return new WaitForSeconds(0.5f);
+		victoryImage.SetActive(true);
+		iTween.PunchScale(victoryImage, iTween.Hash("x", 1.5f, "y", 1.5f, "time", .5f));
+		usersInput.SetActive(false);
+		mathExample.SetActive(false);
+
+
+		//time to wait for last coin fall down
+		yield return new WaitForSeconds(0.6f);
+
+		//show money Text and label
+		earnImage.SetActive(true);
+		iTween.PunchScale(earnImage, iTween.Hash("x", 1.5f, "y", 1.5f, "time", .4f));
+		yield return new WaitForSeconds(0.2f);
 		this.GetComponent<Money>().PayAndPrint(0);
-		StartCoroutine(this.GetComponent<Actions>().Boom(moneyText, initialScale));
+		moneyText.SetActive(true);
+		iTween.PunchScale(moneyText, iTween.Hash("x", 1.5f, "y", 1.5f, "time", .4f));
 
+		//Count coins
 		yield return StartCoroutine(DestroyPoosPayForCoins());
-			yield return new WaitForSeconds(0.8f);
-		recordsHolder.SetActive(true);
-		yield return StartCoroutine(this.GetComponent<Actions>().Move(recordsHolder, topRight, 0.5f));
 
+		//wait for RecordsTable show off 
+		yield return new WaitForSeconds(1.0f);
+		recordsHolder.SetActive(true);
+		iTween.MoveTo(recordsHolder, topRight.position, 0.2f);
+
+		//wait for Timer fly to its place and newRecordBadge show off
+		yield return new WaitForSeconds(0.4f);
 		if (isLoadSuccessful.toggle)
 		{
 			yield return StartCoroutine(this.GetComponent<Records>().ReplacePreviousRecordWithCurrentTime()); 
 		}
 
-		//wait for Records show off and for newRecordBadge show off
-			yield return new WaitForSeconds(1f);
+		//wait before Save money to file and show Again button
+		yield return new WaitForSeconds(1.1f);
 
-		this.GetComponent<Money>().SaveMoneyToFile(); 
+		this.GetComponent<Money>().SaveMoneyToFile(); //TODO save money in the begining of LaunchFinalScoreProcesses
 
+		//Show Again button
 		this.GetComponent<AudioSource>().Play();
-		StartCoroutine(this.GetComponent<Actions>().Move(back, undergroundTop, 0.2f));
+		iTween.MoveTo(back, undergroundTop.position, .3f);
 		againButton.SetActive(true);
+		exitButton.SetActive(true);
+
 	}
 
 
@@ -90,9 +113,7 @@ public class StopCountTo10Test : MonoBehaviour
 	/// </summary>
 	/// <returns></returns>
 	IEnumerator DestroyPoosPayForCoins ()
-	{
-		//Waiyt before count process starts
-		yield return new WaitForSeconds(0.5f);                                     
+	{                                 
 
 		if (IsNoFails())
 		{

@@ -3516,6 +3516,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1044871601 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1966939806160626, guid: 5ee1344dab76e6445b66c31a3aea44db,
+    type: 2}
+  m_PrefabInternal: {fileID: 1051972323}
 --- !u!1 &1047196694
 GameObject:
   m_ObjectHideFlags: 0
@@ -3740,6 +3745,10 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966939806160626, guid: 5ee1344dab76e6445b66c31a3aea44db, type: 2}
+      propertyPath: m_Name
+      value: Exit_Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ee1344dab76e6445b66c31a3aea44db, type: 2}
@@ -5083,7 +5092,6 @@ GameObject:
   - component: {fileID: 1535636746}
   - component: {fileID: 1535636768}
   - component: {fileID: 1535636745}
-  - component: {fileID: 1535636764}
   - component: {fileID: 1535636748}
   - component: {fileID: 1535636749}
   - component: {fileID: 1535636763}
@@ -5404,13 +5412,13 @@ MonoBehaviour:
   underground: {fileID: 1171031916}
   topRight: {fileID: 1047196695}
   undergroundTop: {fileID: 2073871385}
-  undergroundBottom: {fileID: 573097917}
   digits: {fileID: 736688325}
   back: {fileID: 404428817}
   moneyText: {fileID: 772949528}
   victoryImage: {fileID: 141144857}
   earnImage: {fileID: 868370356}
   againButton: {fileID: 272018294}
+  exitButton: {fileID: 1044871601}
   usersInput: {fileID: 2041043242}
   mathExample: {fileID: 2084318134}
 --- !u!114 &1535636757
@@ -5545,17 +5553,6 @@ MonoBehaviour:
   sound: {fileID: 471697056}
   correctAnswer: {fileID: 11400000, guid: 180d473f7c926a14f88f716fc661c63c, type: 2}
   digitsNumber: {fileID: 11400000, guid: 509fc41eec3e56249b4a819889653c79, type: 2}
---- !u!114 &1535636764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1535636744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71d68c3fb2834c4399e4389467699bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1535636765
 MonoBehaviour:
   m_ObjectHideFlags: 0

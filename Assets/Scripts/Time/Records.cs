@@ -88,7 +88,7 @@ public class Records : MonoBehaviour
 
 	IEnumerator ShowRecordBadge()
 	{
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.7f);
 		recordBadge.SetActive(true);
 		iTween.PunchScale(recordBadge, new Vector3(2, 2, 1), .7f);
 		timer.GetComponent<AudioSource>().PlayOneShot(floopAudio);
@@ -112,9 +112,9 @@ public class Records : MonoBehaviour
 
 	void MoveTimerToPlace(int place)
 	{
-		StartCoroutine(this.GetComponent<Actions>().Move(timer, places[place], 0.3f));
-		iTween.PunchScale(timer, new Vector3(2, 2, 1), 1.5f);
 		timer.GetComponent<AudioSource>().Play();
+		iTween.PunchScale(timer, iTween.Hash("x", 2f, "y", 2f, "time", 1.2f));
+		iTween.MoveTo(timer, iTween.Hash("x", places[place].position.x, "y", places[place].position.y, "time", .3f, "easetype", "linear"));
 	}
 
 
