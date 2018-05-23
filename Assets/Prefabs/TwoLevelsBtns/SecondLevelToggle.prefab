@@ -36,11 +36,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224176810102638722}
+  - component: {fileID: 222879184809440862}
   - component: {fileID: 114312118857515440}
   - component: {fileID: 114413436212766226}
   - component: {fileID: 58291926220477782}
   - component: {fileID: 114944848252792252}
-  - component: {fileID: 222879184809440862}
   - component: {fileID: 114235182918280000}
   - component: {fileID: 82834827495092966}
   m_Layer: 5
@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d81fb45f4c55a945850aa8b49438e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  options: {fileID: 11400000, guid: b139db6ff12b1dd4aa00eef3c215e646, type: 2}
-  id: 0
+  options: {fileID: 0}
+  id: 777
 --- !u!114 &114312118857515440
 MonoBehaviour:
   m_ObjectHideFlags: 1

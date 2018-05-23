@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HideAtStart : MonoBehaviour
 {
-	public GameObject[] secondLvlButtons;
+	GameObject[] secondLvlButtons;
 
 	//TODO make it work even if this object was hidden (right after this obj was unhiden by button, Start fires and hides it again)
 	void Start ()

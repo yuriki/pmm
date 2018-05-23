@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class TwoLevelsToggle : MonoBehaviour
 {
+	public StateData exampleSwitch;
 	public GameObject SecondLevelTogglesHolder;
 	public GameObject[] otherButtons;
 	public GameObject[] otherButtonsPos;
 	public AudioSource dontDestroySound;
 
 	[Header("Settings for timing")]
-	public float distanceMyltiplier;
-	public float timeForButtonsAround;
-	public float timeMainButton;
-	public float timeSecondLevelButtons;
+	float distanceMyltiplier = 8;
+	float timeForButtonsAround = 0.2f;
+	float timeMainButton = 0.5f;
 
 	[Header("Type of example this button generates")]
 	public ExampleTypeData exampleType; //corresponds ExampleSwitch StateData (read Developer Description)
@@ -39,7 +40,8 @@ public class TwoLevelsToggle : MonoBehaviour
 		{
 			dontDestroySound.Play();
 			SaveTogglesStates(); //TODO save toggle states
-			this.GetComponent<LoadLevel>().LoadScene(2);
+			exampleSwitch.Value = exampleType.exampleType;
+			SceneManager.LoadScene(2);
 		}
 
 		if (!isSecondLevel)

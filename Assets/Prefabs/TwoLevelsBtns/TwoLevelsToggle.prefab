@@ -53,12 +53,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224737747464478564}
+  - component: {fileID: 222695669602693592}
   - component: {fileID: 114906297006077694}
   - component: {fileID: 114790336776039924}
   - component: {fileID: 114714446803602414}
   - component: {fileID: 114825380127997896}
-  - component: {fileID: 114254143079485360}
-  - component: {fileID: 222695669602693592}
   - component: {fileID: 82594656760852346}
   m_Layer: 5
   m_Name: TwoLevelsToggle
@@ -212,17 +211,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 9-1=?
---- !u!114 &114254143079485360
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1460792151930648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8beae19034a927948a82ba0b2cfe1432, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114277298758710322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonSkin: {fileID: 11400000, guid: 7d2037fbff0ac2b47ab5f498e9223e19, type: 2}
-  buttonType: {fileID: 11400000, guid: 0fd751a10d8e6fe479f8f62207b1f321, type: 2}
+  buttonType: {fileID: 0}
 --- !u!114 &114790336776039924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,28 +328,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: ChooseExampleType
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114825380127997896
@@ -375,18 +341,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd55d1391a303f409acac3b27049eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exampleSwitch: {fileID: 11400000, guid: 9d0ed0dd3f99b45488caf3132ac003f3, type: 2}
   SecondLevelTogglesHolder: {fileID: 0}
   otherButtons:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  otherButtonsPos: []
+  otherButtonsPos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   dontDestroySound: {fileID: 0}
-  distanceMyltiplier: 8
-  timeForButtonsAround: 0.2
-  timeMainButton: 0.5
-  timeSecondLevelButtons: 0.3
-  exampleType: {fileID: 11400000, guid: 09ca6f5f60ec36547ac0ae107773da37, type: 2}
+  exampleType: {fileID: 0}
 --- !u!114 &114906297006077694
 MonoBehaviour:
   m_ObjectHideFlags: 1

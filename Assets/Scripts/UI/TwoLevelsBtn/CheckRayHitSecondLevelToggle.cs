@@ -28,6 +28,7 @@ public class CheckRayHitSecondLevelToggle : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		//TODO add second check - if SecondLevelButtons ACTIVE (because I don't want to calculate Raycasts needlessly)
 		if (mouseDown)
 		{
 			RaycastHit2D hit = Physics2D.Raycast(new Vector2(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y), -Vector2.up, 0f);
