@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224456045788716424}
+  - component: {fileID: 222065649539817836}
   - component: {fileID: 114556938159493226}
   - component: {fileID: 114139620746790652}
-  - component: {fileID: 222065649539817836}
   - component: {fileID: 114636510483421950}
   m_Layer: 5
   m_Name: BackToLevelOne_Btn
@@ -98,7 +98,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_MethodName: Play
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

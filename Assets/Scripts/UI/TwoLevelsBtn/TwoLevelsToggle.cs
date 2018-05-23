@@ -9,6 +9,7 @@ public class TwoLevelsToggle : MonoBehaviour
 	public GameObject SecondLevelTogglesHolder;
 	public GameObject[] otherButtons;
 	public GameObject[] otherButtonsPos;
+	public AudioSource dontDestroySound;
 
 	[Header("Settings for timing")]
 	public float distanceMyltiplier;
@@ -36,13 +37,15 @@ public class TwoLevelsToggle : MonoBehaviour
 	{
 		if(isSecondLevel)
 		{
+			dontDestroySound.Play();
 			SaveTogglesStates(); //TODO save toggle states
 			this.GetComponent<LoadLevel>().LoadScene(2);
 		}
 
 		if (!isSecondLevel)
 		{
-			//TODO add coin sound and not Woonk
+			this.GetComponent<AudioSource>().Play();
+
 			ChangeScale(0.7f);
 			iTween.PunchScale(this.gameObject, iTween.Hash("x", 0.5f, "y", 0.5f, "time", timeMainButton));
 			ToggleSecondLevelBtns(false);
@@ -95,7 +98,7 @@ public class TwoLevelsToggle : MonoBehaviour
 		scale = this.transform.localScale;
 		scale.x = scale.y = scaleValue;
 		this.transform.localScale = scale;
-		//To remain LABEL the same size (after I scaled button down) I need to scale label UP
+		//To remain LABEL size the same (after I scaled BUTTON DOWN) I need to scale LABEL UP
 		label.transform.gameObject.transform.localScale = new Vector3(1/scaleValue, 1/scaleValue, 1/scaleValue);
 	}
 
@@ -103,15 +106,5 @@ public class TwoLevelsToggle : MonoBehaviour
 	void ToggleSecondLevelBtns(bool isBackToFirstLevel)
 	{
 		SecondLevelTogglesHolder.SetActive(!SecondLevelTogglesHolder.activeInHierarchy);
-		if (isBackToFirstLevel)
-		{
-			SecondLevelTogglesHolder.transform.localScale = new Vector3(0.4f, 0.4f, 1f);
-		}
-		else
-		{
-			iTween.ScaleTo(SecondLevelTogglesHolder, iTween.Hash("x", 1f, "y", 1f, "time", 0.1f));
-			iTween.PunchScale(SecondLevelTogglesHolder, iTween.Hash("x", 0.9f, "y", 0.9f, "time", timeSecondLevelButtons, "delay", 0.05f));
-		}
-
 	}
 }
