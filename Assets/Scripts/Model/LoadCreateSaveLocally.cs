@@ -15,7 +15,7 @@ public class LoadCreateSaveLocally : MonoBehaviour
 	[NonSerialized]
 	public string record_FileName = "_Record";
 	[NonSerialized]
-	public string pass_FileName = "Pass.txt";
+	public string passFileNamePlusExt = "Pass.txt";
 	[NonSerialized]
 	public string currencyID_FileName = "CurrencyID";
 	[NonSerialized]
@@ -130,6 +130,6 @@ public class LoadCreateSaveLocally : MonoBehaviour
 
 	public void DeletePasswordFile()
 	{
-		File.Delete(appPath.Data + pass_FileName);
+		File.Delete(appPath.Data + passFileNamePlusExt);
 	}
 }
