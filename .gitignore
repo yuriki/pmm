@@ -47,8 +47,16 @@ sysinfo.txt
 # Sounds
 *.wav
 *.mp3
+
+# DataAssets
 Assets/Data/States/CorrectAnswersNumber.asset
-Assets/Data/Toggles/10Toggles.asset
-Assets/Data/Toggles/MultToggles.asset
+Assets/Data/Money/Amount_USA.asset
+Assets/Data/Money/Amount_UK.asset
+Assets/Data/Money/Amount_UA.asset
+Assets/Data/Money/Amount_Time.asset
+Assets/Data/Money/Amount_RU.asset
+Assets/Data/Money/Amount_EU.asset
+Assets/Data/Money/Amount_Bitcoin.asset
+
+# Misc
 .DS_Store
-Assets/Data/States/CorrectAnswersNumber.asset
