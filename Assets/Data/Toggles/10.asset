@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358a3d16a8eafd240a41aedf5ebaa07a, type: 3}
   m_Name: 10
   m_EditorClassIdentifier: 
-  DeveloperDescription: 'Example types (up to 5 and 10):
+  DeveloperDescription: 'Example types (up to 5 and up to 10):
 
     1+2=?, 10-1=?, 8-?=3'
   exampleType: 0
