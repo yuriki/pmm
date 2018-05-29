@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dd39c4a52c479341910b35c4076f94c, type: 3}
-  m_Name: DigitsNumberInAnswer
+  m_Name: MaxDigitsInUsersAnswer
   m_EditorClassIdentifier: 
-  DeveloperDescription: 'Number of digits user can input
+  DeveloperDescription: 'Max number of digits user can input
 
     in answer (UsersInput_Text)
 

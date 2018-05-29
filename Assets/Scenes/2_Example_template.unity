@@ -5336,7 +5336,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exampleSwitch: {fileID: 11400000, guid: 9d0ed0dd3f99b45488caf3132ac003f3, type: 2}
   correctAnswer: {fileID: 11400000, guid: 180d473f7c926a14f88f716fc661c63c, type: 2}
-  digitsNumber: {fileID: 11400000, guid: 509fc41eec3e56249b4a819889653c79, type: 2}
+  maxDigitsInUserInput: {fileID: 11400000, guid: 509fc41eec3e56249b4a819889653c79,
+    type: 2}
   toggles5: {fileID: 11400000, guid: 67ad5095946611b468de85b3905eebb0, type: 2}
   toggles10: {fileID: 11400000, guid: e333845cebefc9d449634b6e8d52e331, type: 2}
   togglesMult: {fileID: 11400000, guid: f208bb79dcb8c644c9f18f3808867c94, type: 2}
