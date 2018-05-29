@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358a3d16a8eafd240a41aedf5ebaa07a, type: 3}
   m_Name: 10
   m_EditorClassIdentifier: 
-  DeveloperDescription: 'Example types:
+  DeveloperDescription: 'Example types (up to 5 and 10):
 
-    5+4=?, 10-1=?, 8-?=3'
+    1+2=?, 10-1=?, 8-?=3'
   exampleType: 0
-  buttonName: 9-1=?
-  shortButtonName: 9..1=?
+  buttonName: 4-1=?
+  shortButtonName: 4..1=?

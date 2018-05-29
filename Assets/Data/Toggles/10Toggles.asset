@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791737ef11f275f418bf191f5416f0b9, type: 3}
   m_Name: 10Toggles
   m_EditorClassIdentifier: 
-  DeveloperDescription: '0 - plus
+  DeveloperDescription: '0 - plus, 1 - minus
 
-    1 - minus
+    2 - five, 3 - ten,
 
-    2 - unknown (9-?=3)'
-  toggles: 010101
+    4 - unknown (9-?=3)'
+  toggles: 0101010101
