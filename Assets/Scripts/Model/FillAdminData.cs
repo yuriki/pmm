@@ -35,19 +35,23 @@ public class FillAdminData : MonoBehaviour
 		FillRewardFields();
 		ShowEarnedAndPaidMoney();
 
+#if UNITY_IOS || UNITY_ANDROID
 		Analytics.CustomEvent("Settings_Opened", new Dictionary<string, object>
 		{
 			{"Language", Lean.Localization.LeanLocalization.CurrentLanguage}
-		});
+		}); 
+#endif
 	}
 
 
 	public void SettingsClosed()
 	{
+#if UNITY_IOS || UNITY_ANDROID
 		Analytics.CustomEvent("Settings_Closed", new Dictionary<string, object>
 		{
 			{"Currency", this.GetComponent<Money>().currencyTypes.Currencies[this.GetComponent<Money>().currencyID.Value].sign}
-		});
+		}); 
+#endif
 	}
 
 
@@ -208,12 +212,13 @@ public class FillAdminData : MonoBehaviour
 		payOffFieldPlaceholder.text = Lean.Localization.LeanLocalization.GetTranslationText("Paid");
 		payOffField.text = "";
 
+#if UNITY_IOS || UNITY_ANDROID
 		Analytics.CustomEvent("Cash_Paid", new Dictionary<string, object>
 		{
 			{"Currency", this.GetComponent<Money>().currencyTypes.Currencies[this.GetComponent<Money>().currencyID.Value].sign},
-			{"Paid", userInputMoneyValue},
-			{"PaidForAllTime", this.GetComponent<Money>().moneyArray.CurrencyAmounts[this.GetComponent<Money>().currencyID.Value].PaidValue}
-		});
+			{"Paid", userInputMoneyValue}
+		}); 
+#endif
 
 		userInputMoneyValue = 0;
 	}

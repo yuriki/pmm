@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Analytics;
+using System.Collections.Generic;
 
 public class StartCountTo10Test : MonoBehaviour 
 {
@@ -66,6 +68,13 @@ public class StartCountTo10Test : MonoBehaviour
 	/// </summary>
 	public void StartTest ()
 	{
+#if UNITY_IOS || UNITY_ANDROID
+		Analytics.CustomEvent("Test_Started", new Dictionary<string, object>
+		{
+			{"Level_ID",  "Level_" + this.GetComponent<ExampleGenerator>().exampleSwitch.Value}
+		});
+#endif
+
 		digits.SetActive(true);
 		iTween.MoveTo(digits, bottomMiddle.position, .3f);
 		iTween.MoveTo(instruction, bottomRight.position, .8f);

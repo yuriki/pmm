@@ -31,7 +31,6 @@ public class StopCountTo10Test : MonoBehaviour
 	public GameObject againButton;
 	public GameObject exitButton;
 
-
 	[Header("Objects to hide")]
 	public GameObject usersInput;
 	public GameObject mathExample;
@@ -40,6 +39,7 @@ public class StopCountTo10Test : MonoBehaviour
 	{
 		exitButton.SetActive(false);
 
+#if UNITY_IOS || UNITY_ANDROID
 		Analytics.CustomEvent("Test_Finished", new Dictionary<string, object>
 		{
 			{"Level_ID",  "Level_" + this.GetComponent<ExampleGenerator>().exampleSwitch.Value},
@@ -47,7 +47,8 @@ public class StopCountTo10Test : MonoBehaviour
 			{"Wrong_answers", failsNum.Value },
 			{"Currency", this.GetComponent<Money>().currencyTypes.Currencies[this.GetComponent<Money>().currencyID.Value].sign},
 			{"Reward", this.GetComponent<Money>().moneyArray.CurrencyAmounts[this.GetComponent<Money>().currencyID.Value].RewardsArray[this.GetComponent<ExampleGenerator>().exampleSwitch.Value]}
-		});
+		}); 
+#endif
 
 		StartCoroutine(this.GetComponent<Records>().LoadOrCreateRecords());
 
