@@ -39,7 +39,8 @@ public class TwoLevelsToggle : MonoBehaviour
 		if(isSecondLevel)
 		{
 			dontDestroySound.Play();
-			SaveTogglesStates(); //TODO save toggle states
+			//TODO save toggle states
+			//SaveTogglesStates(); 
 			exampleSwitch.Value = exampleType.exampleType;
 			SceneManager.LoadScene(2);
 		}

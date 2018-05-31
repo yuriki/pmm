@@ -41,7 +41,7 @@ public class CheckRayHitSecondLevelToggle : MonoBehaviour
 
 					if (!firstToggleChanged)
 					{
-						//TODO one toggle must be always ON. I decided to do this inside ExampleGenerator class - else (of if statement) has one default option
+						//one toggle must be always ON. I did this inside ExampleGenerator: "else" option always has one default option
 						prevObj.GetComponent<Toggle>().isOn = !prevObj.GetComponent<Toggle>().isOn;
 						currentStateForAllFurtherToggles = prevObj.GetComponent<Toggle>().isOn;
 						firstToggleChanged = true;
