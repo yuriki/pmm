@@ -136,7 +136,7 @@ public class ExampleGenerator : MonoBehaviour
 		//For "9-?=3" type of example I rearranging example to put user imput mark INSIDE examle
 		if (isHardExample)
 		{
-			if (UnityEngine.Random.Range(0, 5) == 0) //1 of 5 examples will be normal (without unknown)
+			if (UnityEngine.Random.Range(0, 10) == 0) //1 of 10 examples will be normal (without unknown)
 			{
 				PrintNormalExample(signInt, signStr);
 			}
@@ -283,18 +283,18 @@ public class ExampleGenerator : MonoBehaviour
 		//if division "÷" is ON
 		if (isHardExample)
 		{
-			//I'm generating here not two (0 and 1), but 5 values (0, 1, 2, 3, 4). 
-			//This means division examples will be generated 4x times more often than multiplication examples
-			if (UnityEngine.Random.Range(0, 5) == 0) //1 of 5 examples will be X×Y=? (all other - X÷Y=?)
+			//I'm generating here not two (0 and 1), but 10 values (0, 1, 2, ... 9). 
+			//This means division examples will be generated 10x times more often than multiplication examples
+			if (UnityEngine.Random.Range(0, 10) == 0) //1 of 10 examples will be X×Y=? (all other - X÷Y=?)
 			{
 				PrintMultExample();
 			}
 			else
 			{
-				if (UnityEngine.Random.Range(0, 10) == 0) //1 of 10 examples will be X÷1=X
+				if (UnityEngine.Random.Range(0, 10) == 0) //1 of 10 examples will be division by "1" (X÷1=X)
 				{
 					mathExamp.text = generated1 * generated2 + "÷1=";
-					correctAnswer.Value = generated2 * generated2;
+					correctAnswer.Value = generated1 * generated2;
 				}
 				else
 				{
@@ -473,7 +473,7 @@ public class ExampleGenerator : MonoBehaviour
 			while (tmpGen1 == generated1)
 				generated1 = UnityEngine.Random.Range(1, 60*multiplier);
 
-			//final STUPID protection
+			//final STUPID protection. If more than 100 tries I generate simple values
 			//TODO get rid of this
 			if (k != 100)
 			{
