@@ -47,14 +47,12 @@ public class StartCountTo10Test : MonoBehaviour
 		if (resetWrongAnswersNum)
 			WrongAnswersNum.Value = 0;
 
-		//hide unneeded
+		//hide and moved unneeded:
 		recordsHolder.transform.position = topLeft.position;
 		recordsHolder.SetActive(false);
-
 		timer.SetActive(false);
 		mathExample.SetActive (false);
 		userInput.SetActive(false);
-		
 		digits.SetActive(false);
 		digits.transform.position = bottomLeft.position;
 
@@ -68,24 +66,26 @@ public class StartCountTo10Test : MonoBehaviour
 	/// </summary>
 	public void StartTest ()
 	{
-#if UNITY_IOS || UNITY_ANDROID
-		Analytics.CustomEvent("Test_Started", new Dictionary<string, object>
-		{
-			{"Level_ID",  "Level_" + this.GetComponent<ExampleGenerator>().exampleSwitch.Value}
-		});
-#endif
+		#if UNITY_IOS || UNITY_ANDROID
+			Analytics.CustomEvent("Test_Started", new Dictionary<string, object>
+			{
+				{"Level_ID",  "Level_" + this.GetComponent<ExampleGenerator>().exampleSwitch.Value}
+			});
+		#endif
 
+		//showing digits
 		digits.SetActive(true);
 		iTween.MoveTo(digits, bottomMiddle.position, .3f);
 		iTween.MoveTo(instruction, bottomRight.position, .8f);
 
+		//generating and showing math example
 		userInput.SetActive(true);
-
 		this.GetComponent<ExampleGenerator>().NewExample();
 		mathExample.SetActive(true);
 		iTween.PunchScale(mathExample, new Vector3(1.5f, 1.5f, 1), .3f);
 		iTween.PunchScale(questionMarkGreen, new Vector3(1.5f, 1.5f, 1), .3f);
 
+		//turn on "Test in process" trigger
 		isTestRunning.On();
 
 		//Starting Timer
