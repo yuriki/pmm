@@ -49,6 +49,7 @@ public class TwoLevelsToggle : MonoBehaviour
 		{
 			this.GetComponent<AudioSource>().Play();
 
+			iTween.Stop();
 			ChangeScale(0.7f);
 			iTween.PunchScale(this.gameObject, iTween.Hash("x", 0.5f, "y", 0.5f, "time", timeMainButton));
 			ToggleSecondLevelBtns(false);
@@ -77,6 +78,7 @@ public class TwoLevelsToggle : MonoBehaviour
 
 	public void BackToLevelOne()
 	{
+		iTween.Stop(this.gameObject);
 		ChangeScale(1f);
 		iTween.PunchScale(this.gameObject, iTween.Hash("x", 0.5f, "y", 0.5f, "time", timeMainButton));
 
