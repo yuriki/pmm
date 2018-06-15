@@ -11,7 +11,6 @@ public class ExampleGenerator : MonoBehaviour
 	public StateData maxDigitsInUserInput;
 
 	[Header("Toggles")]
-	public ExampleTogglesData toggles5;
 	public ExampleTogglesData toggles10;
 	public ExampleTogglesData togglesMult;
 	public ExampleTogglesData togglesColumn;
