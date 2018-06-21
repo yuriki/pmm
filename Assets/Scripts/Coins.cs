@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.Networking;
 
 public class Coins : MonoBehaviour
 {
@@ -29,6 +30,59 @@ public class Coins : MonoBehaviour
 	//current instance of coin
 	GameObject theCoin;
 
+	String assetBundleName = "md.md";
+	String url = "http://pocketmoneymath.3dyuriki.com/bundles/";
+	String platform;
+
+	void Start()
+	{
+		StartCoroutine(InstantiateObject());
+	}
+
+	IEnumerator InstantiateObject()
+	{
+	#if UNITY_IOS || UNITY_ANDROID
+		platform = "Android/";
+	#endif
+
+	#if UNITY_EDITOR
+		platform = "StandaloneWindows64/";
+	#endif
+
+		String uri = url + platform + assetBundleName;
+		UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(uri);
+
+
+
+		//with download progress
+		request.SendWebRequest();
+		while (!request.isDone)
+		{
+			Debug.Log(request.downloadProgress);
+			yield return null;
+		}
+		Debug.Log(request.downloadProgress);
+
+		//the same as above without download progress
+		//yield return request.SendWebRequest();
+
+		AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(request);
+
+		//with download progress
+		if (bundle != null)
+		{
+			AssetBundleRequest newRequest = bundle.LoadAssetAsync<GameObject>("SK_CoinCharacter_md");
+			while (!newRequest.isDone)
+			{
+				Debug.Log("Loading " + newRequest.progress);
+				yield return null;
+			}
+			coinPrefab = (GameObject)newRequest.asset;
+		}
+
+		//the same as abouve without download progress
+		//coinPrefab = bundle.LoadAsset<GameObject>("SK_CoinCharacter_md");
+	}
 
 	/// <summary>
 	/// Cast Coin in random position above top side of screen
