@@ -1,6 +1,7 @@
 using System.IO;
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class LoadCreateSaveLocally : MonoBehaviour
 {
@@ -108,6 +109,21 @@ public class LoadCreateSaveLocally : MonoBehaviour
 
 
 	//TODO add check for correct load from file
+	//I can do this by using coroutine:
+	//IEnumerator LoadJSONFromLocalFile(string fileName, UnityEngine.Object obj)
+	//{
+	//	String file;
+	//	if (File.Exists(appPath.Data + fileName + fileExtension))
+	//	{
+	//		yield return file = File.ReadAllText(appPath.Data + fileName + fileExtension);
+	//		JsonUtility.FromJsonOverwrite(file, obj);
+	//	}
+	//	else
+	//	{
+	//		Debug.LogError("File " + appPath.Data + fileName + fileExtension + " doesn't exist");
+	//	}
+	//}
+
 	public void LoadJSONFromLocal(string fileName, UnityEngine.Object obj)
 	{
 
