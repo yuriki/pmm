@@ -41,13 +41,13 @@ public class Coins : MonoBehaviour
 
 	IEnumerator InstantiateObject()
 	{
-	#if UNITY_IOS || UNITY_ANDROID
-		platform = "Android/";
-	#endif
+		#if UNITY_IOS || UNITY_ANDROID
+			platform = "Android/";
+		#endif
 
-	#if UNITY_EDITOR
-		platform = "StandaloneWindows64/";
-	#endif
+		#if UNITY_EDITOR
+			platform = "StandaloneWindows64/";
+		#endif
 
 		String uri = url + platform + assetBundleName;
 		UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(uri);
@@ -82,6 +82,9 @@ public class Coins : MonoBehaviour
 
 		//the same as abouve without download progress
 		//coinPrefab = bundle.LoadAsset<GameObject>("SK_CoinCharacter_md");
+
+		yield return null;
+
 	}
 
 	/// <summary>
