@@ -23,6 +23,9 @@ public class ExampleGenerator : MonoBehaviour
 	public GameObject questionMark;
 	public RectTransform cross;
 
+	[Header("Objects to hide/show")]
+	public GameObject backwardsToggle;
+
 	[Header("Destination places")]
 	public Transform userBottom;
 	public Transform userTopLeft;
@@ -387,6 +390,10 @@ public class ExampleGenerator : MonoBehaviour
 
 	void ArrangeColumnExample()
 	{
+		backwardsToggle.GetComponent<Toggle>().interactable = false;
+		backwardsToggle.SetActive(true);
+		
+
 		inputResultText.transform.position = userBottom.position;
 		inputResultText.alignment = TextAnchor.MiddleRight;
 		questionMarkRed.alignment = TextAnchor.MiddleRight;
