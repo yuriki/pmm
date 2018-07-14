@@ -3,17 +3,20 @@ using UnityEngine.UI;
 
 public class PressButton : MonoBehaviour
 {
-	
-	public GameObject userInputTextObj;
-	public Text questionMarkGreen;
-	public GameObject questionMarkRed;
-	public Text invisible;
 	public AudioSource sound;
+	public Toggle flipDigitsToggle;
+
+	[Header("Objects to wobble")]
+	public GameObject userInputTextObj;
+	public GameObject questionMarkRed;
+
+	[Header("Text")]
+	public Text questionMarkGreen;
+	public Text invisible;
 
 	[Header("States")]
 	public NonRangedStateData correctAnswer;
 	public StateData digitsNumber;
-	public BoolData isBackwardsDigitsOrder;
 
 	Text userInputText;
 
@@ -50,30 +53,29 @@ public class PressButton : MonoBehaviour
 		}
 		else if (userInputText.text.Length < digitsNumber.Value)
 		{
+			tmpInputString = userInputText.text;
+
 			if (IsThisColumnExample())
 			{
-				tmpInputString = userInputText.text;
 				userInputText.text = userInputDigit.ToString() + tmpInputString; //changing order of inputed digits
 
 				if (correctAnswerLength == 3 && userInputText.text.Length < 3)
 					invisible.text = "<color=#DCDF71FF>?</color>" + "<color=#FFFFFF00>" + userInputText.text + "</color>";
 				else
 					invisible.text = "";
-
-				WobbleUsersInputDigit();
 			}
 			else
 			{
-				tmpInputString = userInputText.text;
 				userInputText.text = tmpInputString + userInputDigit.ToString();
 
 				if (correctAnswerLength == 3 && userInputText.text.Length < 3)
 					invisible.text = "<color=#FFFFFF00>" + userInputText.text + "</color>" + "<color=#DCDF71FF>?</color>";
 				else
 					invisible.text = "";
-
-				WobbleUsersInputDigit();
 			}
+			WobbleUsersInputDigit();
+
+			flipDigitsToggle.interactable = true;
 		}
 		else if (userInputText.text.Length >= digitsNumber.Value)
 		{
@@ -104,6 +106,8 @@ public class PressButton : MonoBehaviour
 				userInputText.text = tmpInputString.Remove(digitsNum - 1);
 				questionMarkGreen.text = "?";
 				invisible.text = "";
+
+				flipDigitsToggle.interactable = false;
 			}
 			else if (digitsNum != 0)
 			{
@@ -127,6 +131,11 @@ public class PressButton : MonoBehaviour
 						invisible.text = "<color=#FFFFFF00>" + userInputText.text + "</color>" + "<color=#DCDF71FF>?</color>";
 				}
 
+				if (digitsNum == 2)
+				{
+					flipDigitsToggle.interactable = false;
+				}
+
 				WobbleUsersInputDigit();
 			} 
 		}
@@ -148,6 +157,8 @@ public class PressButton : MonoBehaviour
 
 	public void PressCheck()
 	{
+		flipDigitsToggle.interactable = false;
+
 		if (HasUserInputSomethingAppropriate())
 		{
 			this.GetComponent<Check>().CheckResult();
@@ -177,7 +188,6 @@ public class PressButton : MonoBehaviour
 
 	bool IsThisColumnExample()
 	{
-		return isBackwardsDigitsOrder;
-		//return (this.GetComponent<ExampleGenerator>().exampleSwitch.Value == 2);
+		return (this.GetComponent<ExampleGenerator>().exampleSwitch.Value == 2);
 	}
 }

@@ -1,30 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DigitsOrder : MonoBehaviour
 {
-
 	public Sprite back;
 	public Sprite forward;
+	public Text usersInputText;
 
-	Toggle toggle;
-	bool isBackwards = true;
+	Toggle flipDigitsToggle;
 
-	public void DigitsOrderToggle ()
+	public void FlipDigitsOrderToggle ()
 	{
-		toggle = GetComponent<Toggle>();
-		if (isBackwards)
+		usersInputText.text = Reverse(usersInputText.text);
+
+		flipDigitsToggle = GetComponent<Toggle>();
+		if (flipDigitsToggle.isOn)
 		{
-			toggle.targetGraphic.GetComponentInChildren<Image>().sprite = forward;
-			isBackwards = false;
+			flipDigitsToggle.targetGraphic.GetComponentInChildren<Image>().sprite = forward;
 		}
 		else
 		{
-			toggle.targetGraphic.GetComponentInChildren<Image>().sprite = back;
-			isBackwards = true;
+			flipDigitsToggle.targetGraphic.GetComponentInChildren<Image>().sprite = back;
 		}
 	}
 
+
+	string Reverse(string s)
+	{
+		char[] charArray = s.ToCharArray();
+		Array.Reverse(charArray);
+		return new string(charArray);
+	}
 }

@@ -24,7 +24,7 @@ public class ExampleGenerator : MonoBehaviour
 	public RectTransform cross;
 
 	[Header("Objects to hide/show")]
-	public GameObject backwardsToggle;
+	public GameObject flipDigitsToggle;
 
 	[Header("Destination places")]
 	public Transform userBottom;
@@ -390,9 +390,10 @@ public class ExampleGenerator : MonoBehaviour
 
 	void ArrangeColumnExample()
 	{
-		backwardsToggle.GetComponent<Toggle>().interactable = false;
-		backwardsToggle.SetActive(true);
-		
+		//flip digits toggle activation
+		flipDigitsToggle.GetComponent<Toggle>().interactable = false;
+		flipDigitsToggle.GetComponent<Toggle>().isOn = true;
+		flipDigitsToggle.SetActive(true);
 
 		inputResultText.transform.position = userBottom.position;
 		inputResultText.alignment = TextAnchor.MiddleRight;
