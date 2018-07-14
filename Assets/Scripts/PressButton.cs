@@ -37,7 +37,7 @@ public class PressButton : MonoBehaviour
 		{
 			userInputText.text = userInputDigit.ToString();
 
-			if (correctAnswerLength > 1 && this.GetComponent<ExampleGenerator>().exampleSwitch.Value == 2)
+			if (correctAnswerLength > 1 && IsThisColumnExample())
 				invisible.text = "<color=#DCDF71FF>?</color>" + "<color=#FFFFFF00>" + userInputDigit.ToString() + "</color>";
 			else if(correctAnswerLength > 1)
 				invisible.text = "<color=#FFFFFF00>" + userInputDigit.ToString() + "</color>" + "<color=#DCDF71FF>?</color>";
@@ -48,8 +48,7 @@ public class PressButton : MonoBehaviour
 		}
 		else if (userInputText.text.Length < digitsNumber.Value)
 		{
-			//if this is example in column I changing order of digits in answer
-			if (this.GetComponent<ExampleGenerator>().exampleSwitch.Value == 2)
+			if (IsThisColumnExample())
 			{
 				tmpInputString = userInputText.text;
 				userInputText.text = userInputDigit.ToString() + tmpInputString; //changing order of inputed digits
@@ -107,7 +106,7 @@ public class PressButton : MonoBehaviour
 			else if (digitsNum != 0)
 			{
 				//if this is Column example I changing order of removing digits
-				if (this.GetComponent<ExampleGenerator>().exampleSwitch.Value == 2)
+				if (IsThisColumnExample())
 				{
 					userInputText.text = tmpInputString.Remove(0, 1);
 
@@ -173,4 +172,9 @@ public class PressButton : MonoBehaviour
 		iTween.PunchScale(userInputTextObj, scale, time);	
 	}
 
+
+	bool IsThisColumnExample()
+	{
+		return (this.GetComponent<ExampleGenerator>().exampleSwitch.Value == 2);
+	}
 }
