@@ -13,6 +13,7 @@ public class PressButton : MonoBehaviour
 	[Header("States")]
 	public NonRangedStateData correctAnswer;
 	public StateData digitsNumber;
+	public BoolData isBackwardsDigitsOrder;
 
 	Text userInputText;
 
@@ -37,6 +38,7 @@ public class PressButton : MonoBehaviour
 		{
 			userInputText.text = userInputDigit.ToString();
 
+			//formating invisible string to match visible user input cause I need precisely indicate next position for user input digit
 			if (correctAnswerLength > 1 && IsThisColumnExample())
 				invisible.text = "<color=#DCDF71FF>?</color>" + "<color=#FFFFFF00>" + userInputDigit.ToString() + "</color>";
 			else if(correctAnswerLength > 1)
@@ -175,6 +177,7 @@ public class PressButton : MonoBehaviour
 
 	bool IsThisColumnExample()
 	{
-		return (this.GetComponent<ExampleGenerator>().exampleSwitch.Value == 2);
+		return isBackwardsDigitsOrder;
+		//return (this.GetComponent<ExampleGenerator>().exampleSwitch.Value == 2);
 	}
 }
