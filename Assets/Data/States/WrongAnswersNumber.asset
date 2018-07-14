@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4444c5311111c1e46954b659a38e4a00, type: 3}
-  m_Name: WrongAnswers
+  m_Name: WrongAnswersNumber
   m_EditorClassIdentifier: 
   DeveloperDescription: 'Number of WRONG answers
 
     (starts from 1)'
-  Value: 13
+  Value: 0
