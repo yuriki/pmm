@@ -48,8 +48,6 @@ public class PressButton : MonoBehaviour
 			else if(correctAnswerLength > 1)
 				invisible.text = "<color=#FFFFFF00>" + userInputDigit.ToString() + "</color>" + "<color=#DCDF71FF>?</color>";
 
-			WobbleUsersInputDigit();
-
 			questionMarkGreen.text = "";
 		}
 		else if (userInputText.text.Length < digitsNumber.Value)
@@ -74,14 +72,11 @@ public class PressButton : MonoBehaviour
 				else
 					invisible.text = "";
 			}
-			WobbleUsersInputDigit();
 
 			FlipDigitsActivationToggle();
 		}
-		else if (userInputText.text.Length >= digitsNumber.Value)
-		{
-			WobbleUsersInputDigit();
-		}
+
+		WobbleUsersInputDigit();
 	}
 
 
