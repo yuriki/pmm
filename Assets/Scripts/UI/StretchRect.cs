@@ -1,7 +1,9 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Check))]
 public class StretchRect : MonoBehaviour
 {
+	public StateData exampleSwitch;
 	public void StretchRectTransformToMatchUserInput(RectTransform rectangle)
 	{
 		Vector2 ofs;
@@ -38,7 +40,7 @@ public class StretchRect : MonoBehaviour
 
 	bool IsThisColumnExample()
 	{
-		return (this.GetComponent<ExampleGenerator>().exampleSwitch.Value == 2);
+		return (exampleSwitch.Value == 2);
 	}
 }
 

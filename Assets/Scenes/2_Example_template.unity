@@ -5733,7 +5733,6 @@ MonoBehaviour:
   pooID: {fileID: 11400000, guid: c4a1b56db1ee87f4bb78fde050f021db, type: 2}
   crossHolder: {fileID: 1017675961}
   cross: {fileID: 1763743682}
-  levelSwitch: {fileID: 11400000, guid: 9d0ed0dd3f99b45488caf3132ac003f3, type: 2}
 --- !u!114 &1535636759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5846,6 +5845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fec1fe94022c87408a0a472619b123d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exampleSwitch: {fileID: 11400000, guid: 9d0ed0dd3f99b45488caf3132ac003f3, type: 2}
 --- !u!114 &1535636765
 MonoBehaviour:
   m_ObjectHideFlags: 0
