@@ -392,7 +392,6 @@ public class ExampleGenerator : MonoBehaviour
 	{
 		//flip digits toggle activation
 		flipDigitsToggle.GetComponent<Toggle>().interactable = false;
-		flipDigitsToggle.GetComponent<Toggle>().isOn = true;
 		flipDigitsToggle.SetActive(true);
 
 		inputResultText.transform.position = userBottom.position;

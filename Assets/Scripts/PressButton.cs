@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent (typeof(StretchRect))]
 public class PressButton : MonoBehaviour
 {
 	public AudioSource sound;
@@ -75,7 +76,7 @@ public class PressButton : MonoBehaviour
 			}
 			WobbleUsersInputDigit();
 
-			flipDigitsToggle.interactable = true;
+			FlipDigitsActivationToggle();
 		}
 		else if (userInputText.text.Length >= digitsNumber.Value)
 		{
@@ -106,8 +107,6 @@ public class PressButton : MonoBehaviour
 				userInputText.text = tmpInputString.Remove(digitsNum - 1);
 				questionMarkGreen.text = "?";
 				invisible.text = "";
-
-				flipDigitsToggle.interactable = false;
 			}
 			else if (digitsNum != 0)
 			{
@@ -119,7 +118,11 @@ public class PressButton : MonoBehaviour
 					//show faint question mark if length of correct answer longer than user input but not less than 1 
 					//(because I show green question mark when user input is empty)
 					if (correctAnswerLength > 1 && correctAnswerLength > userInputText.text.Length)
+					{
 						invisible.text = "<color=#DCDF71FF>?</color>" + "<color=#FFFFFF00>" + userInputText.text + "</color>";
+					}
+
+					FlipDigitsActivationToggle();
 				}
 				else
 				{
@@ -129,11 +132,6 @@ public class PressButton : MonoBehaviour
 					//(because I show green question mark when user input is empty)
 					if (correctAnswerLength > 1 && correctAnswerLength > userInputText.text.Length)
 						invisible.text = "<color=#FFFFFF00>" + userInputText.text + "</color>" + "<color=#DCDF71FF>?</color>";
-				}
-
-				if (digitsNum == 2)
-				{
-					flipDigitsToggle.interactable = false;
 				}
 
 				WobbleUsersInputDigit();
@@ -189,5 +187,19 @@ public class PressButton : MonoBehaviour
 	bool IsThisColumnExample()
 	{
 		return (this.GetComponent<ExampleGenerator>().exampleSwitch.Value == 2);
+	}
+
+
+	void FlipDigitsActivationToggle()
+	{
+		if (correctAnswerLength == userInputText.text.Length)
+		{
+			flipDigitsToggle.interactable = true;
+			this.GetComponent<StretchRect>().StretchRectTransformToMatchUserInput(flipDigitsToggle.gameObject.GetComponent<RectTransform>());
+		}
+		else
+		{
+			flipDigitsToggle.interactable = false;
+		}
 	}
 }
