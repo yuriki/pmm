@@ -207,66 +207,112 @@ public class ExampleGenerator : MonoBehaviour
 		//Set it to "0" if you want max generated value = 9 or 4.
 		int correction = 1;
 
-		gen1 = UnityEngine.Random.Range(0, maxInt + correction);
-		i = 0;
-		// I'm making next generated value different from previous one (different from tmpGenerated)
+		gen1 = UnityEngine.Random.Range(1, maxInt + correction);
+		// I'm making next generated value different from previous one
 		while (tmpGen1 == gen1)
 		{
 			gen1 = UnityEngine.Random.Range(0, maxInt + correction);
-
-			//TODO redo this protection againts zero value because it is inside while-loop that is not always firing
-			//protection against too often zero value
-			if (gen1 == 0)
-			{
-				if (i != 2) //two tries before take zero value
-				{
-					gen1 = UnityEngine.Random.Range(0, maxInt + correction);
-					i++;
-				}
-			}
 		}
+		tmpGen2 = tmpGen1; //I need to save previous generated value because I'm using it further to regenerate gen1
 		tmpGen1 = gen1;
 
-		gen2 = UnityEngine.Random.Range(0, maxInt + correction);
-		//protection against too often zero value
-		if (gen2 == 0)
-		{
-			gen2 = UnityEngine.Random.Range(0, maxInt + correction);
-		}
+		//I'm controling chance to get 0. Now it is 10%
+		gen2 = GenerateIntWithChanceToGetZero(10, maxInt + correction);
 
-		//initializing counters of while-loop cycles
+		//initializing counter of while-loop cycles
 		i = 1;
 		j = 1;
+		k = 1;
 		//IMPORTANT I can use expression "== 0" here only if I regenerate variable "generated". Oterwise I'll have infinite loop in some cases
 		//For example, when "gen1 = 9" and previous "gen2 = 1", I can't generate 1 again and I have infinite loop
 		while ((gen1 + sign * gen2) <= 0 || (gen1 + sign * gen2) > maxInt)
 		{
-			//protection against too often zero result (zero result could be only if we have two the same values 0+0=0, 3-3=0, 8-8=0)
+			k++;
+
+			gen2 = GenerateIntWithChanceToGetZero(3, maxInt + correction);
+
+			//protection against too often zero result (zero result could be only if we have two the same values 0+0=0, 1-1=0 ... 9-9=0)
+			//This is not the same as condition gen1==gen2 (!). Because 4+4=8 - is not as simple as 4-4=0
 			if ((gen1 + sign * gen2) == 0)
 			{
-				if (j > 3) //3 tries
+				//I'm controling chance to get 3-3=0 type of example. Now it's 50%
+				if (UnityEngine.Random.Range(0, 2) == 1)
 				{
-					j = 1;
-					break; //I breake while loop with gen1=gen2
+					while ((gen1 + sign * gen2) == 0)
+					{
+						j++;
+						gen2 = UnityEngine.Random.Range(0, maxInt + correction);
+
+						//Break of infinite loop with default values
+						if (j> 100)
+						{
+							gen1 = gen2 = 2;
+							break;
+						}
+					}
 				}
-				j++;
+			}
+			else
+			{
+				gen2 = UnityEngine.Random.Range(0, maxInt + correction);
+				i++;
 			}
 
-			gen2 = UnityEngine.Random.Range(0, maxInt + correction);
-			i++;
 			//to get rid of infinite loop I'm regenerating "gen1" value here every 10 tries
 			if (i > 10)
 			{
-				while (tmpGen1 == gen1)
+				while (tmpGen2 == gen1)
 				{
 					gen1 = UnityEngine.Random.Range(0, maxInt + correction);
 				}
 				tmpGen1 = gen1;
 				i = 1;
 			}
+
+			//Break of infinite loop with default values
+			if (k>100)
+			{
+				gen1 = gen2 = 2;
+				break;
+			}
 		}
 
 		return new int[] { gen1, gen2 };
+	}
+
+	/// <summary>
+	/// Generates int value between 0 and "max" with "chance" to get zero
+	/// </summary>
+	/// <param name="chance">Chance to get zero in percent (1 = 1%). Value must be between 1 to 50</param>
+	/// <param name="max">Maximum generated number</param>
+	/// <returns></returns>
+	int GenerateIntWithChanceToGetZero(float chance, int max)
+	{
+		int gen;
+		int invChance;
+		if ( chance >= 50)
+		{
+			invChance = 2;
+		}
+		else if (chance <= 0)
+		{
+			invChance = 100;
+		}
+		else
+		{
+			invChance = (int)(100 / chance);
+		}
+		
+		//I'm controling chance to get 0. 
+		if (UnityEngine.Random.Range(0, invChance) == 1)
+		{
+			gen = 0;
+		}
+		else
+		{
+			gen = UnityEngine.Random.Range(1, max);
+		}
+		return gen;
 	}
 
 
@@ -448,6 +494,7 @@ public class ExampleGenerator : MonoBehaviour
 		//TODO make protection against infinite loop when toggle ">100" is active
 		while (11*multiplier > generated1 + signInt * generated2 || 99*multiplier < generated1 + signInt * generated2)
 		{
+			k++;
 			//first I'm trying 10x times to regenerate generated2
 			if (i != 10)
 			{
@@ -491,12 +538,7 @@ public class ExampleGenerator : MonoBehaviour
 				generated1 = UnityEngine.Random.Range(1, 60*multiplier);
 
 			//final STUPID protection. If more than 100 tries I generate simple values
-			//TODO get rid of this
-			if (k != 100)
-			{
-				k++;
-			}
-			else
+			if (k > 100)
 			{
 				generated1 = UnityEngine.Random.Range(17, 37);
 				generated2 = UnityEngine.Random.Range(8, 16);
