@@ -3053,7 +3053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultLanguage: 
   DetectLanguage: 1
-  SaveLanguage: 1
+  SaveLanguage: 0
   Languages:
   - English
   - Russian
@@ -3654,7 +3654,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.9394275, y: 0.21100001}
   m_AnchorMax: {x: 0.9394275, y: 0.21100001}
-  m_AnchoredPosition: {x: -65, y: 0.0000019073486}
+  m_AnchoredPosition: {x: -65, y: 0}
   m_SizeDelta: {x: 101, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1017675961
@@ -12168,7 +12168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.9394275, y: 0.21100001}
   m_AnchorMax: {x: 0.9394275, y: 0.21100001}
-  m_AnchoredPosition: {x: -0.4993744, y: 0.000009536743}
+  m_AnchoredPosition: {x: -0.49938965, y: 0.0000076293945}
   m_SizeDelta: {x: 101, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1833811981 stripped
