@@ -1520,7 +1520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &488490008
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1533,6 +1533,7 @@ RectTransform:
   m_Children:
   - {fileID: 981026239}
   - {fileID: 1584979004}
+  - {fileID: 1827920633}
   m_Father: {fileID: 759813753}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3653,7 +3654,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.9394275, y: 0.21100001}
   m_AnchorMax: {x: 0.9394275, y: 0.21100001}
-  m_AnchoredPosition: {x: -0.5, y: 0.0000076293945}
+  m_AnchoredPosition: {x: -65, y: 0.0000019073486}
   m_SizeDelta: {x: 101, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1017675961
@@ -5631,6 +5632,7 @@ MonoBehaviour:
   cross: {fileID: 1763743682}
   flipDigitsToggle: {fileID: 741901417}
   userBottom: {fileID: 1649939982}
+  userTopMiddle: {fileID: 1827920633}
   userTopLeft: {fileID: 981026239}
   userTopRight: {fileID: 1584979004}
 --- !u!114 &1535636754
@@ -12136,6 +12138,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phraseName: Victory
   FallbackText: Victory!
+--- !u!1 &1827920632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1827920633}
+  m_Layer: 5
+  m_Name: UserTopMiddle
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1827920633
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1827920632}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9995733, y: 0.9995733, z: 0.9995733}
+  m_Children: []
+  m_Father: {fileID: 488490008}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.9394275, y: 0.21100001}
+  m_AnchorMax: {x: 0.9394275, y: 0.21100001}
+  m_AnchoredPosition: {x: -0.4993744, y: 0.000009536743}
+  m_SizeDelta: {x: 101, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1833811981 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1134666713662446, guid: 99a405e23b3aff041b2e028773e5e365,

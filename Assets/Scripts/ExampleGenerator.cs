@@ -28,6 +28,7 @@ public class ExampleGenerator : MonoBehaviour
 
 	[Header("Destination places")]
 	public Transform userBottom;
+	public Transform userTopMiddle;
 	public Transform userTopLeft;
 	public Transform userTopRight;
 	#endregion
@@ -118,6 +119,7 @@ public class ExampleGenerator : MonoBehaviour
 	{
 		int signInt;
 		string signStr;
+		string emptySpace = "   ";
 		// Choosing sign based on active toggle (among SecondLvlToggles)
 		if (ChooseToggleWithValueRandomly(toggles10) == 1)
 		{
@@ -149,18 +151,27 @@ public class ExampleGenerator : MonoBehaviour
 
 				correctAnswer.Value = generated1 + signInt * generated2;
 
-				//if correct answer is 10 I need rearrange example to fix user input position
+				//if correct answer is 10 (consists of TWO digits) I need rearrange example to fix user input position
 				if (correctAnswer.Value == 10)
 				{
-					MoveUserInputMarker(userTopLeft);
+					MoveUserInputMarker(userTopMiddle);
 					MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 128);
+
+					//fix for error 0+?=10 (because I don't have enough space for TOW digit answer)
+					if (generated1 == 0 && signInt == 1)
+					{
+						maxDigitsInUserInput.Value = 2;
+						emptySpace = "     ";
+						MoveUserInputMarker(userTopLeft);
+					}
+
 				}
 				else
 				{
 					MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 65);
-					MoveUserInputMarker(userTopLeft);
+					MoveUserInputMarker(userTopMiddle);
 				}
-				mathExamp.text = generated1 + signStr + "   " + "=" + correctAnswer.Value;
+				mathExamp.text = generated1 + signStr + emptySpace + "=" + correctAnswer.Value;
 				//real correct answer for example "9-?=3" equals "generated2"
 				correctAnswer.Value = generated2;
 			}
