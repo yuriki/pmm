@@ -81,14 +81,7 @@ public class ExampleGenerator : MonoBehaviour
 		}
 		else if (exampleSwitch.Value == 1)							//multiplication table example 3x4=?
 		{
-			if (togglesMult.toggles[0]) //if toggle "÷" is active
-			{
-				GenerateMultTableExample(true); 
-			}
-			else
-			{
-				GenerateMultTableExample(false);
-			}
+			GenerateMultTableExample();
 		}
 		else if (exampleSwitch.Value == 2)							//in column example
 		{
@@ -330,44 +323,55 @@ public class ExampleGenerator : MonoBehaviour
 	}
 
 
-	void GenerateMultTableExample(bool isHardExample)
+	void GenerateMultTableExample()
 	{
 		//randomly choosing subtype of example based on user activated toggles (among SecondLevelButtons)
 		generated1 = ChooseToggleWithValueRandomly(togglesMult);
 
-		//TODO make generated and generated2 switch places (for mult ONLY and not for divistion): 2x9=? --> 9x2=?
-
 		generated2 = GenerateSecondMultiplierForMultTable();
 
-		//if division "÷" is ON
-		if (isHardExample)
+		string signStr = "×";
+		correctAnswer.Value = generated1 * generated2;
+		if (togglesMult.toggles[0]) //if division (24÷3=?) example
 		{
-			//I'm generating here not two (0 and 1), but 10 values (0, 1, 2, ... 9). 
-			//This means division examples will be generated 10x times more often than multiplication examples
-			if (UnityEngine.Random.Range(0, 10) == 0) //1 of 10 examples will be X×Y=? (all other - X÷Y=?)
+			//TODO add 5% chance to get "×" example
+			signStr = "÷";
+			correctAnswer.Value = generated2;
+			generated2 = generated1;
+			generated1 = correctAnswer.Value * generated1;
+		}
+		
+		if (togglesMult.toggles[1]) //if example with unknown (6×?=18 or 50÷?=10)
+		{
+			MoveUserInputMarker(userTopMiddle);
+			maxDigitsInUserInput.Value = 1;
+			string emptySpace = "   ";
+
+			if (generated2 > 9) //TWO digits answer case
 			{
-				PrintMultExample();
+				emptySpace = "     ";
+				MoveUserInputMarker(userTopLeft);
+				maxDigitsInUserInput.Value = 2;
+			}
+
+			if (correctAnswer.Value > 9)
+			{
+				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 128);
 			}
 			else
 			{
-				if (UnityEngine.Random.Range(0, 10) == 0) //1 of 10 examples will be division by "1" (X÷1=X)
-				{
-					mathExamp.text = generated1 * generated2 + "÷1=";
-					correctAnswer.Value = generated1 * generated2;
-				}
-				else
-				{
-					//Because generated1 could be (2-9 inclusive) there is no chance of division by zero example (X÷0=?)
-					mathExamp.text = generated1 * generated2 + "÷" + generated1 + "=";
-					correctAnswer.Value = generated2;
-				}
+				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 65);
 			}
+
+			mathExamp.text = generated1 + signStr + emptySpace + "=" + correctAnswer.Value;
+			correctAnswer.Value = generated2;
 		}
 		else
 		{
-			PrintMultExample();
+			mathExamp.text = generated1 + signStr + generated2 + "=";
 		}
 	}
+
 
 	/// <summary>
 	/// Generate and return random value (0-10 inclusive) but with control of rare values.
@@ -390,7 +394,7 @@ public class ExampleGenerator : MonoBehaviour
 				//protection against simple examples
 				if (gen == 0)//too often "0" value
 				{
-					if (i < 4) //chance of getting "0" is 4x times less than any other number
+					if (i < 2) //chance of getting "0" is 2x times less than any other number
 					{
 						gen = UnityEngine.Random.Range(0, 11);
 					}
@@ -435,13 +439,6 @@ public class ExampleGenerator : MonoBehaviour
 		}
 		tmpGen2 = gen;
 		return gen;
-	}
-
-
-	void PrintMultExample()
-	{
-		mathExamp.text = generated1 + "×" + generated2 + "=";
-		correctAnswer.Value = generated1 * generated2;
 	}
 	
 
