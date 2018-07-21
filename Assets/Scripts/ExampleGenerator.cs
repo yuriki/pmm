@@ -332,7 +332,7 @@ public class ExampleGenerator : MonoBehaviour
 
 		string signStr = "×";
 		correctAnswer.Value = generated1 * generated2;
-		if (togglesMult.toggles[0]) //if division (24÷3=?) example
+		if (togglesMult.toggles[0]) //if division example (24÷3=?) 
 		{
 			//TODO add 5% chance to get "×" example
 			signStr = "÷";
@@ -343,33 +343,39 @@ public class ExampleGenerator : MonoBehaviour
 		
 		if (togglesMult.toggles[1]) //if example with unknown (6×?=18 or 50÷?=10)
 		{
-			MoveUserInputMarker(userTopMiddle);
-			maxDigitsInUserInput.Value = 1;
-			string emptySpace = "   ";
-
-			if (generated2 > 9) //TWO digits answer case
-			{
-				emptySpace = "     ";
-				MoveUserInputMarker(userTopLeft);
-				maxDigitsInUserInput.Value = 2;
-			}
-
-			if (correctAnswer.Value > 9)
-			{
-				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 128);
-			}
-			else
-			{
-				MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 65);
-			}
-
-			mathExamp.text = generated1 + signStr + emptySpace + "=" + correctAnswer.Value;
+			mathExamp.text = generated1 + signStr + GetEmptySpaceAndArrangeMultUnknownExample() + "=" + correctAnswer.Value;
 			correctAnswer.Value = generated2;
 		}
 		else
 		{
 			mathExamp.text = generated1 + signStr + generated2 + "=";
 		}
+	}
+
+
+	string GetEmptySpaceAndArrangeMultUnknownExample()
+	{
+		MoveUserInputMarker(userTopMiddle);
+		maxDigitsInUserInput.Value = 1;
+		string emptySpace = "   ";
+
+		if (generated2 > 9) //TWO digits answer case
+		{
+			emptySpace = "     ";
+			MoveUserInputMarker(userTopLeft);
+			maxDigitsInUserInput.Value = 2;
+		}
+
+		if (correctAnswer.Value > 9)
+		{
+			MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 128);
+		}
+		else
+		{
+			MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 65);
+		}
+
+		return emptySpace;
 	}
 
 
