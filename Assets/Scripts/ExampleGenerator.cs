@@ -69,15 +69,7 @@ public class ExampleGenerator : MonoBehaviour
 			{
 				maxNum = 5;
 			}
-			//if toggle "?" (example with unknown 9-?=3) is active
-			if (toggles10.toggles[4]) 
-			{
-				GenerateCountTo10Example(maxNum, true);
-			}
-			else
-			{
-				GenerateCountTo10Example(maxNum, false);
-			}
+			GenerateCountTo10Example(maxNum);
 		}
 		else if (exampleSwitch.Value == 1)							//multiplication table example 3x4=?
 		{
@@ -108,21 +100,15 @@ public class ExampleGenerator : MonoBehaviour
 	}
 
 
-	void GenerateCountTo10Example(int maxValue, bool isHardExample)
+	void GenerateCountTo10Example(int maxValue)
 	{
-		int signInt;
-		string signStr;
-		string emptySpace = "   ";
-		// Choosing sign based on active toggle (among SecondLvlToggles)
+		int signInt = 1;
+		string signStr = "+";
+		// Choose sign based on active toggle (among SecondLvlToggles)
 		if (ChooseToggleWithValueRandomly(toggles10) == 1)
 		{
 			signInt = -1;
 			signStr = "-";
-		}
-		else
-		{
-			signInt = 1;
-			signStr = "+";
 		}
 
 		//I'm using array because of .NET 3.5 (still no tuple support)
@@ -130,16 +116,17 @@ public class ExampleGenerator : MonoBehaviour
 		generated1 = tmpArray[0];
 		generated2 = tmpArray[1];
 
-		//For "9-?=3" type of example I rearranging example to put user imput mark INSIDE examle
-		if (isHardExample)
+		//For unknown (9-?=3) type of example I rearranging example to put user imput mark INSIDE examle
+		if (toggles10.toggles[4])
 		{
-			if (UnityEngine.Random.Range(0, 10) == 0) //1 of 10 examples will be normal (without unknown)
+			if (UnityEngine.Random.Range(0, 10) == 1) //1 of 10 examples will be normal (without unknown)
 			{
 				PrintNormalExample(signInt, signStr);
 			}
 			else
 			{
-				//IMPORTANT! changing this value I'm doing imposible for user to input more than one digit in answer
+				string emptySpace = "   ";
+				//IMPORTANT! Set this value to 1 to make imposible for user to input more than one digit in answer
 				maxDigitsInUserInput.Value = 1;
 
 				correctAnswer.Value = generated1 + signInt * generated2;
@@ -157,7 +144,6 @@ public class ExampleGenerator : MonoBehaviour
 						emptySpace = "     ";
 						MoveUserInputMarker(userTopLeft);
 					}
-
 				}
 				else
 				{
