@@ -99,7 +99,7 @@ public class FillAdminData : MonoBehaviour
 
 			currenciesDropdown.options.Add(dataOption);
 		}
-		//Setting current currency to be default value in dropdown list
+		//Set current currency to be default value in dropdown list
 		currenciesDropdown.value = currencyID.Value;
 
 		if (currencyID.Value == 0)
@@ -107,14 +107,6 @@ public class FillAdminData : MonoBehaviour
 			label.text = Lean.Localization.LeanLocalization.GetTranslationText(currencyArray.Currencies[0].currencyName) + " (" + currencyArray.Currencies[0].sign + ")";
 		}
 	}
-
-
-
-	//public void SaveParameters ()
-	//{
-	//	SaveCurrencyIDToFile();
-	//	SaveAllRewardsToFile();
-	//}
 
 
 	void SaveCurrencyIDToFile()
@@ -135,18 +127,17 @@ public class FillAdminData : MonoBehaviour
 	{
 		if (currencyID.Value == 2)
 		{
-			Lean.Localization.LeanLocalization.CurrentLanguage = "Russian"; // RUS
+			Lean.Localization.LeanLocalization.CurrentLanguage = "Russian";
 		}
 		else if (currencyID.Value == 3)
 		{
-			Lean.Localization.LeanLocalization.CurrentLanguage = "Ukrainian"; //UA
+			Lean.Localization.LeanLocalization.CurrentLanguage = "Ukrainian";
 		}
 		else
 		{
-			Lean.Localization.LeanLocalization.CurrentLanguage = "English"; //ENG
+			Lean.Localization.LeanLocalization.CurrentLanguage = "English";
 		}
 	}
-
 
 
 	public void SaveAllRewardsToFile()

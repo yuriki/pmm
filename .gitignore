@@ -49,7 +49,6 @@ sysinfo.txt
 *.mp3
 
 # DataAssets
-Assets/Data/States/CorrectAnswersNumber.asset
 Assets/Data/States/WrongAnswers.asset
 Assets/Data/Money/Amount_USA.asset
 Assets/Data/Money/Amount_UK.asset
