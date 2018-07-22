@@ -1,13 +1,13 @@
 using System.IO;
 using System;
 using UnityEngine;
-using System.Collections;
 
 public class LoadCreateSaveLocally : MonoBehaviour
 {
 	public MoneyArray moneyArray;
 	public StateData currencyID;
 	public StringData appPath;
+	public BoolData isHardExamplesOnly;
 
 	public BoolData firstLoad;
 	
@@ -19,6 +19,8 @@ public class LoadCreateSaveLocally : MonoBehaviour
 	public string passFileNamePlusExt = "Pass.txt";
 	[NonSerialized]
 	public string currencyID_FileName = "CurrencyID";
+	[NonSerialized]
+	public string disableSimpleExamples_FileName = "DisSimEx";
 	[NonSerialized]
 	public string fileExtension = ".json";
 
@@ -34,6 +36,9 @@ public class LoadCreateSaveLocally : MonoBehaviour
 
 			ResetEveryCurrencyAmount();
 			CreateOrLoadAmountOfEveryCurrency();
+
+			isHardExamplesOnly.toggle = false; //for the first time app shows all examples
+			LoadOrCreateJSONLocally(disableSimpleExamples_FileName, isHardExamplesOnly);
 
 			firstLoad.toggle = false;
 		}

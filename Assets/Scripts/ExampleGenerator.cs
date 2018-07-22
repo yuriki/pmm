@@ -9,6 +9,7 @@ public class ExampleGenerator : MonoBehaviour
 	public StateData exampleSwitch;
 	public NonRangedStateData correctAnswer;
 	public StateData maxDigitsInUserInput;
+	public BoolData isHardExamplesOnly;
 
 	[Header("Toggles")]
 	public ExampleTogglesData toggles10;
@@ -320,11 +321,21 @@ public class ExampleGenerator : MonoBehaviour
 		correctAnswer.Value = generated1 * generated2;
 		if (togglesMult.toggles[0]) //if division example (24÷3=?) 
 		{
-			//TODO add 5% chance to get "×" example
-			signStr = "÷";
-			correctAnswer.Value = generated2;
-			generated2 = generated1;
-			generated1 = correctAnswer.Value * generated1;
+			int chance = 20; //5%
+			if (isHardExamplesOnly.toggle)
+			{
+				chance = 2; //50%
+			}
+
+			//some chance to get "×" example, instead of "÷"
+			if (UnityEngine.Random.Range(0, chance) != 1)
+			{
+				signStr = "÷";
+
+				correctAnswer.Value = generated2;
+				generated2 = generated1;
+				generated1 = correctAnswer.Value * generated1; 
+			}
 		}
 		
 		if (togglesMult.toggles[1]) //if example with unknown (6×?=18 or 50÷?=10)

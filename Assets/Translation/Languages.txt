@@ -41,3 +41,7 @@ Again : Ukrainian = Ще
 s : English = s
 s : Russian = с
 s : Ukrainian = с
+
+Disable Simple Examples : English = Disable Simple Examples
+Disable Simple Examples : Russian = Только сложные примеры
+Disable Simple Examples : Ukrainian = Лише складні приклади

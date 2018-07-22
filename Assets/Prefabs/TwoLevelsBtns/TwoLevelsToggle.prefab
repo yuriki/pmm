@@ -342,6 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exampleSwitch: {fileID: 11400000, guid: 9d0ed0dd3f99b45488caf3132ac003f3, type: 2}
+  isHardExamplesOnly: {fileID: 11400000, guid: 2c63d32d9e3e51643b0d0d47a2d736c0, type: 2}
   SecondLevelTogglesHolder: {fileID: 0}
   otherButtons:
   - {fileID: 0}

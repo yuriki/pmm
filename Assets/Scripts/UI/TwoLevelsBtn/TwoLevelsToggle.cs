@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using UnityEngine.SceneManagement;
 
 public class TwoLevelsToggle : MonoBehaviour
 {
 	public StateData exampleSwitch;
+	public BoolData isHardExamplesOnly;
 	public GameObject SecondLevelTogglesHolder;
 	public GameObject[] otherButtons;
 	public GameObject[] otherButtonsPos;
@@ -36,6 +34,11 @@ public class TwoLevelsToggle : MonoBehaviour
 
 	public void GoToLevelTwo()
 	{
+		if (isHardExamplesOnly.toggle)
+		{
+			isSecondLevel = true;
+		}
+
 		if(isSecondLevel)
 		{
 			dontDestroySound.Play();
