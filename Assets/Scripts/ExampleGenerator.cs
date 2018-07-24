@@ -340,8 +340,17 @@ public class ExampleGenerator : MonoBehaviour
 		
 		if (togglesMult.toggles[1]) //if example with unknown (6×?=18 or 50÷?=10)
 		{
-			mathExamp.text = generated1 + signStr + GetEmptySpaceAndArrangeMultUnknownExample() + "=" + correctAnswer.Value;
-			correctAnswer.Value = generated2;
+			if (generated1 != 0 && correctAnswer.Value != 0) //protection against 0x?=0 or 0÷?=0
+			{
+				mathExamp.text = generated1 + signStr + GetEmptySpaceAndArrangeMultUnknownExample() + "=" + correctAnswer.Value;
+				correctAnswer.Value = generated2; 
+			}
+			else
+			{
+				correctAnswer.Value = 23;
+				mathExamp.text = "16+" + GetEmptySpaceAndArrangeMultUnknownExample() + "=23";
+				correctAnswer.Value = 7;
+			}
 		}
 		else
 		{
