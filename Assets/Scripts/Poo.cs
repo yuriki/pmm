@@ -6,6 +6,7 @@ public class Poo : MonoBehaviour
 {
 	[Tooltip("Poo prefab")]
 	public GameObject poo;
+	public GameObject rottenApple;
 
 	[Header("Particles")]
 	public GameObject pooParticles;
@@ -29,7 +30,11 @@ public class Poo : MonoBehaviour
 		Vector3 randomPos = new Vector3((UnityEngine.Random.value - 0.5f) * 4f, 5.4f, 90f);
 		float randomScale = 0.6f - UnityEngine.Random.value * 0.1f;
 
+#if UNITY_ANDROID
+		thePoo = GameObject.Instantiate(rottenApple, randomPos, Quaternion.identity);
+#else
 		thePoo = GameObject.Instantiate(poo, randomPos, Quaternion.identity);
+#endif
 
 		thePoo.transform.position = randomPos;
 		thePoo.transform.localScale = new Vector3(randomScale, randomScale, 1f);
