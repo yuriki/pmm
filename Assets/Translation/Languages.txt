@@ -46,6 +46,14 @@ Disable Simple Examples : English = Disable Simple Examples
 Disable Simple Examples : Russian = Только сложные примеры
 Disable Simple Examples : Ukrainian = Лише складні приклади
 
-Point : English = Point
+Point : English = Points
 Point : Russian = Очки
 Point : Ukrainian = Очки
+
+HideWarningText : English = Press button with number one if you understand
+HideWarningText : Russian = Нажмите кнопку с цифрой один если поняли
+HideWarningText : Ukrainian = Натисніть цифру один якщо зрозуміли
+
+WarningText : English = Parents pay to kids using their own money (cash)
+WarningText : Russian = Родители выплачивают детям со своих денег (наличными)
+WarningText : Ukrainian = Батьки виплачуюсть дітям зі своїх власних грошей (готівкою)
