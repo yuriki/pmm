@@ -31,7 +31,7 @@ public class LoadCreateSaveLocally : MonoBehaviour
 		{
 			SetAppPath();
 
-			currencyID.Value = 0; //$ is default currency. But if json file with other value exists, overwrite from file happens
+			SetDefaultCurrency();
 			LoadOrCreateJSONLocally(currencyID_FileName, currencyID);
 
 			ResetEveryCurrencyAmount();
@@ -42,6 +42,12 @@ public class LoadCreateSaveLocally : MonoBehaviour
 
 			firstLoad.toggle = false;
 		}
+	}
+
+
+	void SetDefaultCurrency()
+	{
+		currencyID.Value = 6; //Point is default currency. But if json file with other value exists, overwrite from file happens
 	}
 
 
@@ -56,32 +62,36 @@ public class LoadCreateSaveLocally : MonoBehaviour
 
 	void ResetEveryCurrencyAmount()
 	{
-		for (int i = 0; i < moneyArray.CurrencyAmounts.Length; i++)
+		for (int currentCurrencyID = 0; currentCurrencyID < moneyArray.CurrencyAmounts.Length; currentCurrencyID++)
 		{
-			moneyArray.CurrencyAmounts[i].Value = 0;
-			moneyArray.CurrencyAmounts[i].PaidValue = 0;
-			ResetRewardAmount(i);
+			moneyArray.CurrencyAmounts[currentCurrencyID].Value = 0;
+			moneyArray.CurrencyAmounts[currentCurrencyID].PaidValue = 0;
+			ResetRewardAmount(currentCurrencyID);
 		}
 	}
 
 
-	void ResetRewardAmount(int id)
+	void ResetRewardAmount(int currentCurrency)
 	{
-		for (int j = 0; j < moneyArray.CurrencyAmounts[id].RewardsArray.Length; j++)
+		for (int exampleTypeID = 0; exampleTypeID < moneyArray.CurrencyAmounts[currentCurrency].RewardsArray.Length; exampleTypeID++)
 		{
-			if (j == 0) //reward for 10-9=? example
+			if (exampleTypeID == 0) //reward for 10-9=? example
 			{
-				if (id == 4) //if Bitcoin
-					moneyArray.CurrencyAmounts[id].RewardsArray[j] = 600;
+				if (currentCurrency == 4) //if Bitcoin
+					moneyArray.CurrencyAmounts[currentCurrency].RewardsArray[exampleTypeID] = 600;
+				else if (currentCurrency == 6) //if Point
+					moneyArray.CurrencyAmounts[currentCurrency].RewardsArray[exampleTypeID] = 1;
 				else
-					moneyArray.CurrencyAmounts[id].RewardsArray[j] = 5;
+					moneyArray.CurrencyAmounts[currentCurrency].RewardsArray[exampleTypeID] = 5;
 			}
 			else
 			{
-				if (id == 4) //if Bitcoin
-					moneyArray.CurrencyAmounts[id].RewardsArray[j] = 2400;
+				if (currentCurrency == 4) //if Bitcoin
+					moneyArray.CurrencyAmounts[currentCurrency].RewardsArray[exampleTypeID] = 2400;
+				else if (currentCurrency == 6) //if Point
+					moneyArray.CurrencyAmounts[currentCurrency].RewardsArray[exampleTypeID] = 2;
 				else
-					moneyArray.CurrencyAmounts[id].RewardsArray[j] = 20;
+					moneyArray.CurrencyAmounts[currentCurrency].RewardsArray[exampleTypeID] = 20;
 			}
 		}
 	}

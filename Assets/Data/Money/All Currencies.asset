@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -18,3 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 015eb36ed2ce34943827d30fe714ae86, type: 2}
   - {fileID: 11400000, guid: 0bd49ebf3489dd746809a7b6d5128d44, type: 2}
   - {fileID: 11400000, guid: 6f4e90605a7a1804394fa5ce1db85c41, type: 2}
+  - {fileID: 11400000, guid: 19bef643a2287ff47821c76bb97a8951, type: 2}

@@ -70,7 +70,7 @@ public class FillAdminData : MonoBehaviour
 		for (int i = 0; i <rewardFields.Length; i++)
 		{
 			Text placeholderText = rewardFields[i].placeholder as Text;
-			if (IsBitcoin())
+			if (IsBitcoin() || IsPoint())
 			{
 				placeholderText.text = moneyArray.CurrencyAmounts[currencyID.Value].RewardsArray[i].ToString("N0", f);
 			}
@@ -102,6 +102,12 @@ public class FillAdminData : MonoBehaviour
 		//Set current currency to be default value in dropdown list
 		currenciesDropdown.value = currencyID.Value;
 
+		FixErrorWithFirstItemInDropdownMenu();
+	}
+
+
+	void FixErrorWithFirstItemInDropdownMenu()
+	{
 		if (currencyID.Value == 0)
 		{
 			label.text = Lean.Localization.LeanLocalization.GetTranslationText(currencyArray.Currencies[0].currencyName) + " (" + currencyArray.Currencies[0].sign + ")";
@@ -189,11 +195,6 @@ public class FillAdminData : MonoBehaviour
 	}
 
 
-	bool IsBitcoin()
-	{
-		return currencyID.Value == 4;
-	}
-
 	public void PayOFF ()
 	{
 		this.GetComponent<Money>().PayAndPrint(-userInputMoneyValue, true);
@@ -212,5 +213,16 @@ public class FillAdminData : MonoBehaviour
 #endif
 
 		userInputMoneyValue = 0;
+	}
+
+
+	bool IsBitcoin()
+	{
+		return currencyID.Value == 4;
+	}
+
+	bool IsPoint()
+	{
+		return currencyID.Value == 6;
 	}
 }

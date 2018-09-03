@@ -63,9 +63,9 @@ public class Money : MonoBehaviour
 		//dividing by 100 to have cents
 		moneyFloat *= 0.01f;
 		var f = new NumberFormatInfo { NumberGroupSeparator = Lean.Localization.LeanLocalization.GetTranslationText("separator") }; //thousands separator
-		if (IsDollar() || IsEuro() || IsBitcoin() || IsPound())
+		if (IsDollar() || IsEuro() || IsBitcoin() || IsPound() || IsPoint())
 		{
-			if (IsBitcoin())
+			if (IsBitcoin() || IsPoint())
 			{
 				outputText.text = currencyTypes.Currencies[currencyID.Value].sign + moneySum.ToString("N0", f);
 			}
@@ -99,5 +99,10 @@ public class Money : MonoBehaviour
 	bool IsPound()
 	{
 		return currencyID.Value == 5;
+	}
+
+	bool IsPoint()
+	{
+		return currencyID.Value == 6;
 	}
 }
