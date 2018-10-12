@@ -50,10 +50,18 @@ Point : English = Points
 Point : Russian = Очки
 Point : Ukrainian = Очки
 
-HideWarningText : English = Press button with number one if you understand
-HideWarningText : Russian = Нажмите кнопку с цифрой один если поняли
-HideWarningText : Ukrainian = Натисніть цифру один якщо зрозуміли
+HideWarningText : English = Press button with number one if you agree
+HideWarningText : Russian = Нажмите кнопку с цифрой один если согласны
+HideWarningText : Ukrainian = Натисніть кнопку з цифрою один якщо згодні
 
-WarningText : English = Parents pay to kids using their own money (cash)
-WarningText : Russian = Родители выплачивают детям со своих денег (наличными)
-WarningText : Ukrainian = Батьки виплачуюсть дітям зі своїх власних грошей (готівкою)
+WarningText : English = Parents pay out using their own money (cash)
+WarningText : Russian = Выплату производят родители своими собственными деньгами (наличными)
+WarningText : Ukrainian = Виплату забезпечують батьки зі своїх власних грошей (готівкою)
+
+WarningExplainText : English = The app only keeps records of earned money. Parents setup reward for each type of math example. Parents are fully responsible for paying out money
+WarningExplainText : Russian = Приложение только ПОДСЧИТЫВАЕТ заработанные деньги. Родители устанавливают награду за каждый пример и, сами же, выплачивают ребёнку заработанную сумму
+WarningExplainText : Ukrainian = Додаток лише РАХУЄ зароблені гроші. А батьки встановлюють винагороду за кожен приклад і, самі ж, виплачують дитині зароблену суму
+
+Input amount : English = Input amount to pay to your kid in cash
+Input amount : Russian = Введите сумму, чтобы отдать своему ребёнку
+Input amount : Ukrainian = Введіть суму, що віддасте своїй дитині
