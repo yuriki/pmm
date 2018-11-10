@@ -171,7 +171,7 @@ public class FillAdminData : MonoBehaviour
 
 	int ConvertStringToInt(string stringWithFloatValue)
 	{
-		if (IsBitcoin())
+		if (IsBitcoin() || IsPoint())
 		{
 			return int.Parse(stringWithFloatValue);
 		}
