@@ -65,3 +65,11 @@ WarningExplainText : Ukrainian = Додаток лише РАХУЄ заробл
 Input amount : English = Input amount to pay to your kid in cash
 Input amount : Russian = Введите сумму, чтобы отдать своему ребёнку
 Input amount : Ukrainian = Введіть суму, що віддасте своїй дитині
+
+RateApp : English = Write review
+RateApp : Russian = Написать отзыв
+RateApp : Ukrainian = Написати відгук
+
+DonateURL : English = http://3dyuriki.com/
+DonateURL : Russian = http://3dyuriki.com/
+DonateURL : Ukrainian = http://3dyuriki.com/
