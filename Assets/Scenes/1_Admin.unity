@@ -196,7 +196,6 @@ GameObject:
   - component: {fileID: 70533951}
   - component: {fileID: 70533952}
   - component: {fileID: 70533953}
-  - component: {fileID: 70533954}
   m_Layer: 5
   m_Name: TGL_DisableSimpleExamples
   m_TagString: Untagged
@@ -277,7 +276,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 70533954}
+      - m_Target: {fileID: 2047582437}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -309,101 +308,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f208bb79dcb8c644c9f18f3808867c94, type: 2}
   rewawrdCountTo10ExampleInput: {fileID: 1646994331}
   generalObj: {fileID: 1535636744}
---- !u!82 &70533954
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 70533950}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 00937a943cb24064b82a8408952f0757, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1 &71013215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2740,10 +2644,10 @@ RectTransform:
   m_Father: {fileID: 1602645067}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.2744702, y: 0.11818805}
-  m_AnchorMax: {x: 0.721, y: 0.878}
-  m_AnchoredPosition: {x: 0.5640106, y: -0.049991608}
-  m_SizeDelta: {x: 1, y: 0.100000024}
+  m_AnchorMin: {x: 0.17676492, y: 0.11818805}
+  m_AnchorMax: {x: 0.8185299, y: 0.86619365}
+  m_AnchoredPosition: {x: 0.13999939, y: 0.4500084}
+  m_SizeDelta: {x: -0.11999893, y: 1.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &975171259
 Animator:
@@ -3466,7 +3370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0457872, y: 0.46458107}
   m_AnchorMax: {x: 0.22854616, y: 0.89800006}
-  m_AnchoredPosition: {x: -0.3999939, y: 0.30000496}
+  m_AnchoredPosition: {x: -0.40000153, y: 0.30000496}
   m_SizeDelta: {x: 0.70000076, y: -0.4000001}
   m_Pivot: {x: -0.000000052154064, y: 1}
 --- !u!114 &1102606983
@@ -4289,6 +4193,7 @@ GameObject:
   - component: {fileID: 1195149371}
   - component: {fileID: 1195149370}
   - component: {fileID: 1195149369}
+  - component: {fileID: 1195149374}
   m_Layer: 5
   m_Name: BTN_RateApp
   m_TagString: Untagged
@@ -4311,10 +4216,10 @@ RectTransform:
   m_Father: {fileID: 1417027930}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.2744702, y: 0.11818805}
-  m_AnchorMax: {x: 0.721, y: 0.878}
-  m_AnchoredPosition: {x: 0.6045494, y: -0.049995422}
-  m_SizeDelta: {x: 0.419899, y: 0.099990845}
+  m_AnchorMin: {x: 0.132, y: 0.10638168}
+  m_AnchorMax: {x: 0.85976034, y: 0.8898064}
+  m_AnchoredPosition: {x: 0.69000244, y: -0.049995422}
+  m_SizeDelta: {x: -0.3699999, y: -1.9000001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1195149369
 Animator:
@@ -4397,6 +4302,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1195149374}
+        m_MethodName: RateApp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1195149372
@@ -4433,6 +4349,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1195149367}
   m_CullTransparentMesh: 0
+--- !u!114 &1195149374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1195149367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22280c7d42043fb43bf1f134aa7cba98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1206571320
 GameObject:
   m_ObjectHideFlags: 0
@@ -4514,7 +4441,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: For parents only
+  m_Text: "\u041B\u0438\u0448\u0435 \u0434\u043B\u044F \u0431\u0430\u0442\u044C\u043A\u0456\u0432"
 --- !u!222 &1206571324
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5146,7 +5073,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pay out
+  m_Text: "\u041E\u043F\u043B\u0430\u0442\u0438\u0442\u0438"
 --- !u!222 &1483750704
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5686,12 +5613,12 @@ GameObject:
   - component: {fileID: 1602645069}
   - component: {fileID: 1602645068}
   m_Layer: 5
-  m_Name: About_Block
+  m_Name: Donate_Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1602645067
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5869,7 +5796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultLanguage: 
   DetectLanguage: 1
-  SaveLanguage: 0
+  SaveLanguage: 1
   Languages:
   - English
   - Russian
@@ -6405,7 +6332,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reset PIN
+  m_Text: "\u041E\u0431\u043D\u0443\u043B\u0438\u0442\u0438 PIN-\u043A\u043E\u0434"
 --- !u!222 &1749009785
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6704,7 +6631,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Paid
+  m_Text: "\u0421\u043F\u043B\u0430\u0447\u0435\u043D\u043E"
 --- !u!222 &1911396864
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7141,6 +7068,7 @@ GameObject:
   - component: {fileID: 2047582434}
   - component: {fileID: 2047582436}
   - component: {fileID: 2047582435}
+  - component: {fileID: 2047582437}
   m_Layer: 5
   m_Name: DisableSimpleExamples_Block
   m_TagString: Untagged
@@ -7201,6 +7129,101 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2047582433}
   m_CullTransparentMesh: 0
+--- !u!82 &2047582437
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2047582433}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e415d0c37b6c8ce4d80ffc3e78a034a7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &2084318134
 GameObject:
   m_ObjectHideFlags: 0
@@ -7269,7 +7292,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Settings
+  m_Text: "\u041D\u0430\u043B\u0430\u0448\u0442\u0443\u0432\u0430\u043D\u043D\u044F"
 --- !u!222 &2084318137
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -70,6 +70,10 @@ RateApp : English = Write review
 RateApp : Russian = Написать отзыв
 RateApp : Ukrainian = Написати відгук
 
-DonateURL : English = http://3dyuriki.com/
-DonateURL : Russian = http://3dyuriki.com/
-DonateURL : Ukrainian = http://3dyuriki.com/
+Donate : English = Donate
+Donate : Russian = Жертвовать
+Donate : Ukrainian = Жертвувати
+
+DonateURL : English = http://3dyuriki.com/donate
+DonateURL : Russian = http://3dyuriki.com/donate-ru
+DonateURL : Ukrainian = http://3dyuriki.com/donate-ru

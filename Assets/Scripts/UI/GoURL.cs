@@ -11,6 +11,5 @@ public class GoURL : MonoBehaviour
 	{
 		url = Lean.Localization.LeanLocalization.GetTranslationText(urlText);
 		Application.OpenURL(url);
-		Debug.Log("url: " + url);
 	}
 }
