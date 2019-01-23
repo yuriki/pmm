@@ -67,8 +67,8 @@ Input amount : Russian = Введите сумму, чтобы отдать св
 Input amount : Ukrainian = Введіть суму, що віддасте своїй дитині
 
 RateApp : English = Write review
-RateApp : Russian = Написать отзыв
-RateApp : Ukrainian = Написати відгук
+RateApp : Russian = Напишите отзыв
+RateApp : Ukrainian = Напишіть відгук
 
 Donate : English = Donate
 Donate : Russian = Жертвовать
